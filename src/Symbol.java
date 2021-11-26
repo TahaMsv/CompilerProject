@@ -3,8 +3,13 @@ class Symbol{
     private Object value;
 
     public Symbol(String token,Object value){
-        this.token=token;
-        this.value=value;
+        this.token = token;
+        this.value = value;
+    }
+
+    public Symbol(String token) {
+        this.token = token;
+        this.value = value;
     }
 
     public String getToken(){
