@@ -870,7 +870,7 @@ public class Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1:
-            { throw new RuntimeException("Illegal character \"" + yytext() + "\" at line "+yyline+", column " + yycolumn);
+            { return new Symbol("Error", "Illegal character \"" + yytext() + "\" at line "+yyline+", column " + yycolumn);
             }
             // fall through
           case 73: break;
@@ -893,6 +893,7 @@ public class Scanner {
             { yybegin(String);
         string.setLength(0);
         string.append("\"");
+        return new Symbol("stringLiteral", yytext());
             }
             // fall through
           case 77: break;
@@ -1004,6 +1005,7 @@ public class Scanner {
           case 98: break;
           case 27:
             { string.append(yytext());
+        return new Symbol("stringLiteral", yytext());
             }
             // fall through
           case 99: break;
@@ -1012,7 +1014,7 @@ public class Scanner {
         string.append("\"");
         StringBuilder temp = string;
         string = new StringBuilder();
-        return new Symbol("stringLiteral", temp.toString());
+        return new Symbol("stringLiteral", yytext());
             }
             // fall through
           case 100: break;
@@ -1105,13 +1107,13 @@ public class Scanner {
           case 117: break;
           case 46:
             { REAL = getValueOfScientificNumber(yytext());
-        return new Symbol("scientificNotation", REAL);
+        return new Symbol("scientificNotation", yytext());
             }
             // fall through
           case 118: break;
           case 47:
             { ICV = getValueOfHexadecimalNumber(yytext());
-        return new Symbol("hexadecimal", ICV);
+        return new Symbol("hexadecimal", yytext());
             }
             // fall through
           case 119: break;

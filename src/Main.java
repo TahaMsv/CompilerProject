@@ -15,6 +15,10 @@ public class Main {
     public final static String COMMENTS = "Comments";
     public final static String OPERATORS_AND_PUNCTUATIONS = "Operators and Punctuations";
     public final static String UNDEFINED_TOKEN = "Undefined Token";
+    public final static String LINE_TERMINATOR = "Line Terminator";
+
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RESET = "\u001B[0m";
 
     //used for check the type
 
@@ -40,11 +44,13 @@ public class Main {
 //            if (currentToken.getToken().equals("$")) {
 //                break;
 //            }
-            if (!currentToken.getToken().startsWith("Illegal")) {
+            if (!currentToken.getToken().startsWith("Error")) {
                 syntaxHighlighter.addHtmlText(currentToken.toString(), getTokenType(currentToken.getToken()));
             }
+            else {
+                System.out.println(ANSI_RED + currentToken.toString() + ANSI_RESET);
+            }
             syntaxHighlighter.writeToHtml(syntaxHighlighter.getDocument().outerHtml(),"src/OutputHtmlHighlighter.html");
-            System.out.println(currentToken);
         }
     }
 
@@ -59,8 +65,10 @@ public class Main {
             case "identifier":
                 return IDENTIFIERS;
             case "decimal":
+            case "hexadecimal":
                 return INTEGER_NUMBERS;
             case "realNumber":
+            case "scientificNotation":
                 return REAL_NUMBERS;
             case "stringLiteral":
                 return STRINGS;
@@ -68,6 +76,8 @@ public class Main {
                 return SPECIAL_CHARACTERS;
             case "comment":
                 return COMMENTS;
+            case "lineTerminate":
+                return LINE_TERMINATOR;
             default:
                 return UNDEFINED_TOKEN;
         }

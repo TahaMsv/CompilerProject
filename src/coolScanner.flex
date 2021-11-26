@@ -212,7 +212,7 @@ ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static
 
     {Hexadecimal} {
         ICV = getValueOfHexadecimalNumber(yytext());
-        return new Symbol("hexadecimal", ICV);
+        return new Symbol("hexadecimal", yytext());
     }
 
     {RealNumber} {
@@ -220,9 +220,10 @@ ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static
         return new Symbol("realNumber", REAL);
     }
 
+
     {ScientificNumber} {
         REAL = getValueOfScientificNumber(yytext());
-        return new Symbol("scientificNotation", REAL);
+        return new Symbol("scientificNotation", yytext());
     }
 
     {Comment} { 
@@ -245,16 +246,18 @@ ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static
         yybegin(String);
         string.setLength(0);
         string.append("\"");
+        return new Symbol("stringLiteral", yytext());
     }
 
     [^] { 
-        throw new RuntimeException("Illegal character \"" + yytext() + "\" at line "+yyline+", column " + yycolumn); 
+          return new Symbol("Error", "Illegal character \"" + yytext() + "\" at line "+yyline+", column " + yycolumn);
     }
 }
 
 <String> {
     {InputCharacter}+ {
         string.append(yytext());
+        return new Symbol("stringLiteral", yytext());
     }
 
     {SpecialCharacters} {
@@ -267,12 +270,12 @@ ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static
         string.append("\"");
         StringBuilder temp = string;
         string = new StringBuilder();
-        return new Symbol("stringLiteral", temp.toString());
+        return new Symbol("stringLiteral", yytext());
     }
 }
 
 [^] { 
-        throw new RuntimeException("Illegal character \"" + yytext() + "\" at line "+yyline+", column " + yycolumn); 
+        return new Symbol("Error", "Illegal character \"" + yytext() + "\" at line "+yyline+", column " + yycolumn);
 }
 
 <<EOF>>    {return (new Symbol("$"));}

@@ -12,7 +12,7 @@ public class SyntaxHighlighter {
 
     public SyntaxHighlighter() {
         String html = "<html><head><title>Highlighter</title></head>"
-                + "<body style=\"background-color:#808080;font-family:monospace;\">"
+                + "<body style=\"background-color:#2d3e50;font-family:monospace;\">"
                 + "<div id='tokens'> <p>" + "<span style=" + "\"color:lightgrey\">" + line + "</span>" + "&nbsp;" + "</p>"
                 + "</body></html>";
         document = Jsoup.parse(html);
@@ -24,10 +24,15 @@ public class SyntaxHighlighter {
 
     public void addHtmlText(String tokenValue, String tokenType) {
         Element p = document.getElementsByTag("p").first();
-        Element span = new Element("span");
-        span.attr("style", getStyle(tokenType));
-        span.append(getRightTextFormat(tokenValue));
-        p.append(span.outerHtml());
+        if (tokenType != Main.LINE_TERMINATOR) {
+            Element span = new Element("span");
+            span.attr("style", getStyle(tokenType));
+            span.append(getRightTextFormat(tokenValue)).append(" ");
+            p.append(span.outerHtml());
+        } else {
+            Element br = new Element("br");
+            p.append(br.outerHtml());
+        }
     }
 
     private String newLineWithGreyStyle(int line) {
