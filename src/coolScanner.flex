@@ -80,7 +80,7 @@ Identifier = {Letter} ([a-zA-Z0-9_]){0,30}
 
 
 ///////////////Special Characters (Escape Characters)/////
-SpecialCharacters = "\\n" | "\\t" | "\\r" | "\\’" |  "\\”" | ("\\"{2})
+SpecialCharacters = "\\n" | "\\t" | "\\r" | "\\'" |  "\\\"" | ("\\"{2})
 
 ////////////////Reserved Keywords///////////
 ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static"

@@ -458,11 +458,11 @@ public class Scanner {
             double base = Double.valueOf(scientific.substring(0, index));
             int exp = 0;
             if (scientific.charAt(index + 1) == '+')
-                int exp = Integer.parseInt(scientific.substring(index + 2));
+                exp = Integer.parseInt(scientific.substring(index + 2));
             else if (scientific.charAt(index + 1) == '-')
-                int exp = Integer.parseInt(scientific.substring(index + 2)) * -1;
+                exp = Integer.parseInt(scientific.substring(index + 2)) * -1;
             else
-                int exp = Integer.parseInt(scientific.substring(index + 1));
+                exp = Integer.parseInt(scientific.substring(index + 1));
 
             value = base * Math.pow(10, exp);
         } else if (index < 0)

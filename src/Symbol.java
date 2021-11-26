@@ -1,8 +1,8 @@
-class Symbol{
+class Symbol {
     private String token;
     private Object value;
 
-    public Symbol(String token,Object value){
+    public Symbol(String token, Object value) {
         this.token = token;
         this.value = value;
     }
@@ -12,16 +12,16 @@ class Symbol{
         this.value = token;
     }
 
-    public String getToken(){
+    public String getToken() {
         return this.token;
-    } 
+    }
 
-    public Object getValue(){
+    public Object getValue() {
         return this.value;
     }
 
     @Override
-    public String toString(){
-        return this.token + " " + this.value.toString();
+    public String toString() {
+        return this.value.toString();
     }
 }
