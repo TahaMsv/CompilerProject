@@ -1,0 +1,5 @@
+while (a > 12) {
+	string ss_12 = "hello string and";
+	int p_science = 0X3a;
+	double number <= 3.12e+4;
+}

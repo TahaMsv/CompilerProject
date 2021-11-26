@@ -9,7 +9,7 @@ class Symbol{
 
     public Symbol(String token) {
         this.token = token;
-        this.value = value;
+        this.value = token;
     }
 
     public String getToken(){

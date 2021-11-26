@@ -42,6 +42,9 @@
 Digit = [0-9]
 Letter = [a-zA-Z]
 
+PlusSign = "+"
+MinusSign = "-"
+
 ///////////////Numbers//////////////////////
 
 DecimalInteger = {Digit}+
@@ -52,7 +55,6 @@ RealNumber = {Digit}+"."{Digit}*
 Hexadecimal = [0][xX][0-9a-fA-F]+
 
 ///////////Strings///////////////////////////
-StringConstant = (\".*?[^\\]\")
 
 LineTerminator = \r|\n|\r\n
 InputCharacter = [^\r\n\"\\]
@@ -222,7 +224,7 @@ ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static
     }
 
     {LineTerminator} {
-        /* ignore */
+        return new Symbol("lineTerminate");
     }
 
     {WhiteSpace} {
@@ -265,3 +267,5 @@ ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static
 [^] { 
         throw new RuntimeException("Illegal character \"" + yytext() + "\" at line "+yyline+", column " + yycolumn); 
 }
+
+<<EOF>>    {return (new Symbol("$"));}
