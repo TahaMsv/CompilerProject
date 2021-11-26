@@ -23,8 +23,15 @@
             index = scientific.indexOf("E");
         double value = 0;
         if (index > 0) {
-            int base = Integer.parseInt(scientific.substring(0, index));
-            int exp = Integer.parseInt(scientific.substring(index + 1));
+            double base = Double.valueOf(scientific.substring(0, index));
+            int exp = 0;
+            if (scientific.charAt(index + 1) == '+')
+                exp = Integer.parseInt(scientific.substring(index + 2));
+            else if (scientific.charAt(index + 1) == '-')
+                exp = Integer.parseInt(scientific.substring(index + 2)) * -1;
+            else
+                exp = Integer.parseInt(scientific.substring(index + 1));
+
             value = base * Math.pow(10, exp);
         } else if (index < 0)
             value = Double.parseDouble(scientific);
@@ -49,7 +56,7 @@ MinusSign = "-"
 
 DecimalInteger = {Digit}+
 // ScientificNumber = \b-?[1-9](?:\.\d+)?[Ee][-+]?\d+\b
-ScientificNumber = (RealNumber | DecimalInteger) [eE] (PlusSign | MinusSign) {DecimalInteger}
+ScientificNumber = ({RealNumber} | {DecimalInteger}) [eE] ({PlusSign} | {MinusSign})? {DecimalInteger}
 // RealNumber = ^(0|(-?(((0|[1-9]\d*)\.\d+)|([1-9]\d*))))$
 RealNumber = {Digit}+"."{Digit}*
 Hexadecimal = [0][xX][0-9a-fA-F]+
@@ -197,7 +204,6 @@ ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static
     ")" { return (new Symbol(")")); }
     "{" { return (new Symbol("{")); }
     "}" { return (new Symbol("}")); }
-
 
     {DecimalInteger} {
         ICV = Integer.parseInt(yytext());
