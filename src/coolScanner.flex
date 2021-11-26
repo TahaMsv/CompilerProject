@@ -19,8 +19,44 @@
 
 Digit = [0-9]
 Letter = [a-zA-Z]
-PlusSign ="+"
-MinusSign="-"
+
+/////////////////Signes//////////////////
+PlusSign = "+"
+MinusSign = "-"
+AddSign = "+"
+UnaryMinusSign = "-"
+ProductionSign = "*"
+DivisionSign ="/"
+ModSign = "%"
+AdditionassignmentSign = "+="
+ProductionassignmentSign = "*="
+subtractionAssignmentSign = "-="
+DivisionAssignmentSign = "/="
+IncrementSign = "++"
+Decrement = "--"
+LessSign = "<"
+LessEqualSign = "<="
+GreaterSign = ">"
+GreaterEqualSign = ">="
+NotEqualSign = "!="
+EqualSign = "=="
+AssignmentSign = "="
+LogicalAndSign = "&&"
+BitWiseAndSign = "&"
+LogicalOrSign = "||"
+BitwiseORSign = "|"
+BitwiseXorSign = "^"
+DotSign = "."
+StringLiteralSign = "“"
+NotSign = "!"
+ColonSign = ","
+SemiColonSign = ";"
+OpeningBracesSign = "["
+ClosingBracesSign = "]" 
+OpeningParenthesisSign = "("
+closingparenthesisSign = ")"
+OpeningCurlyBracesSign = "{"
+ClosingCurlyBracesSign = "}"
 
 
 ///////////////Numbers//////////////////////
@@ -52,7 +88,7 @@ Identifier = {Letter} ([a-zA-Z0-9_]){0,30}
 
 
 ///////////////Special Characters (Escape Characters)/////
-SpecialCharacters = "\\n" | "\\t" | "\\r" | "\\'" ||  "\\\"" || ("\\"{2})
+SpecialCharacters = "\\n" | "\\t" | "\\r" | "\\’" ||  "\\”" || ("\\"{2})
 
 ////////////////Reserved Keywords///////////
 ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static"
@@ -60,3 +96,11 @@ ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static
                     | "continue" | "if" | "fi" | "else" | "then" | "new" | "Array"
                     | "return" | "in_string" | "in_int" | "print" | "len"
 
+///////////////Operators And Punctuation/////////
+OperatorsAndPunctuation={AddSign} | {UnaryMinusSign} | {ProductionSign} | {DivisionSign} | {ModSign} 
+    | {AdditionassignmentSign} | {ProductionassignmentSign} | {subtractionAssignmentSign} |{DivisionAssignmentSign} 
+    | {IncrementSign} | {Decrement} | {LessSign} | {LessEqualSign} | {GreaterSign} | {GreaterEqualSign} 
+    | {NotEqualSign} | {EqualSign} | {AssignmentSign} | {LogicalAndSign} | {BitWiseAndSign} 
+    | {LogicalOrSign} | {BitwiseORSign} | {BitwiseXorSign} | {DotSign} | {StringLiteralSign} | {NotSign} | {ColonSign} | {SemiColonSign} 
+    | {OpeningBracesSign} | {ClosingBracesSign} | {OpeningParenthesisSign} | {closingparenthesisSign} |
+    | {OpeningCurlyBracesSign} | {ClosingCurlyBracesSign}
