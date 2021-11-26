@@ -259,6 +259,7 @@ ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static
 
     {SpecialCharacters} {
         string.append(yytext());
+        return new Symbol("specialCharacter", yytext());
     }
 
     \" {
