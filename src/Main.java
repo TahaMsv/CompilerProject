@@ -6,7 +6,7 @@ public class Main {
         FileWriter fileWriter = new FileWriter(file);
         try {
             parser.parse();
-            fileWriter.write("Syntax is Ok!");
+            fileWriter.write("Syntax is correct!");
         } catch (Exception e) {
             fileWriter.write("Syntax is wrong!");
         }

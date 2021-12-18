@@ -1,0 +1,80 @@
+Current token: text='class' id=1
+Current node: 0
+Current cell of parser table: target-node=2 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='class' id=1
+Current node: 2
+Current cell of parser table: target-node=3 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='identifier' id=2
+Current node: 3
+Current cell of parser table: target-node=4 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='{' id=3
+Current node: 4
+Current cell of parser table: target-node=5 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='void' id=15
+Current node: 5
+Current cell of parser table: target-node=8 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='void' id=15
+Current node: 8
+Current cell of parser table: target-node=40 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='void' id=15
+Current node: 40
+Current cell of parser table: target-node=26 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='void' id=15
+Current node: 26
+Current cell of parser table: target-node=27 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='identifier' id=2
+Current node: 27
+Current cell of parser table: target-node=28 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='(' id=16
+Current node: 28
+Current cell of parser table: target-node=29 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='int' id=7
+Current node: 29
+Current cell of parser table: target-node=34 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='int' id=7
+Current node: 34
+Current cell of parser table: target-node=14 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='int' id=7
+Current node: 14
+Current cell of parser table: target-node=15 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='identifier' id=2
+Current node: 15
+Current cell of parser table: target-node=81 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='identifier' id=2
+Current node: 38
+Current cell of parser table: target-node=39 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='comma' id=18
+Current node: 39
+Current cell of parser table: target-node=38 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='bool' id=10
+Current node: 38
+Current cell of parser table: target-node=-1 action=ERROR function=[]
+--------------------------------------------------
+Error happened while parsing ...
+At node 38: current token is bool but except: [identifier, []
