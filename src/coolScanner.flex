@@ -244,11 +244,11 @@ ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static
     }
 
     {Comment} { 
-        return new Symbol("comment", yytext());   
+//        return new Symbol("comment", yytext());
     }
 
     {LineTerminator} {
-        return new Symbol("lineTerminate");
+//        return new Symbol("lineTerminate");
     }
 
     {WhiteSpace} {

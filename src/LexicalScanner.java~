@@ -455,7 +455,8 @@ public class LexicalScanner implements Lexical {
             currSymbol = nextSymbol();
             return currSymbol.getToken();
         } catch (Exception e) {
-            throw new Exception("Can't get next token");
+            e.printStackTrace();
+            return null;
         }
     }
 
@@ -1069,7 +1070,7 @@ public class LexicalScanner implements Lexical {
             // fall through
           case 107: break;
           case 36:
-            { return new Symbol("comment", yytext());
+            { //        return new Symbol("comment", yytext());
             }
             // fall through
           case 108: break;

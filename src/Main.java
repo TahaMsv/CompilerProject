@@ -6,10 +6,11 @@ public class Main {
         FileWriter fileWriter = new FileWriter(file);
         try {
             parser.parse();
-            fileWriter.write("Syntax is correct!");
+            fileWriter.write("Syntax is Ok!");
         } catch (Exception e) {
             fileWriter.write("Syntax is wrong!");
         }
+        fileWriter.close();
     }
 
     public static void main(String[] args) throws IOException {
@@ -45,10 +46,8 @@ public class Main {
 
         LexicalScanner scanner = new LexicalScanner(new FileReader(inputCoolFilePath));
         CodeGenerator codeGenerator = new CodeGeneratorImpl();
-        Parser parser = new Parser(scanner, codeGenerator, tablePath);
+        Parser parser = new Parser(scanner, codeGenerator, tablePath, true);
 
         parseAndWrite(outputFilePath, parser);
-
-
     }
 }

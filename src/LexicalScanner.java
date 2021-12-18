@@ -896,7 +896,7 @@ public class LexicalScanner implements Lexical {
             // fall through
           case 74: break;
           case 3:
-            { return new Symbol("lineTerminate");
+            { //        return new Symbol("lineTerminate");
             }
             // fall through
           case 75: break;
@@ -1070,7 +1070,7 @@ public class LexicalScanner implements Lexical {
             // fall through
           case 107: break;
           case 36:
-            { return new Symbol("comment", yytext());
+            { //        return new Symbol("comment", yytext());
             }
             // fall through
           case 108: break;
