@@ -13,7 +13,7 @@ public class SyntaxHighlighter {
     public SyntaxHighlighter() {
         String html = "<html><head><title>Highlighter</title></head>"
                 + "<body style=\"background-color:#2d3e50;font-family:monospace;\">"
-                + "<div id='tokens'> <p>" + "<span style=" + "\"color:lightgrey\">" + line + "</span>" + "&nbsp;" + "</p>"
+                + "<div id='tokens'> <p>" + "&nbsp;" + "</p>"
                 + "</body></html>";
         document = Jsoup.parse(html);
     }
@@ -36,7 +36,7 @@ public class SyntaxHighlighter {
     }
 
     private String newLineWithGreyStyle(int line) {
-        return "<br><span style=" + "\"color:lightgrey\">" + line + "</span>";
+        return "<br>";
     }
 
     private String getRightTextFormat(String text) {

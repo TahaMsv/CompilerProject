@@ -1,85 +1,54 @@
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.*;
 
 public class Main {
-    public final static String RESERVED_KEYWORDS = "Reserved Keywords";
-    public final static String IDENTIFIERS = "Identifiers";
-    public final static String INTEGER_NUMBERS = "Integer Numbers";
-    public final static String REAL_NUMBERS = "Real Numbers";
-    public final static String STRINGS = "Strings";
-    public final static String SPECIAL_CHARACTERS = "Special Characters";
-    public final static String COMMENTS = "Comments";
-    public final static String OPERATORS_AND_PUNCTUATIONS = "Operators and Punctuations";
-    public final static String UNDEFINED_TOKEN = "Undefined Token";
-    public final static String LINE_TERMINATOR = "Line Terminator";
-
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_RESET = "\u001B[0m";
-
-    //used for check the type
-
-    public static List<String> keywordsArray = new ArrayList<String>(
-            Arrays.asList("let", "void", "int", "real", "bool", "string", "static",
-                    "class", "for", "rof", "loop", "pool", "while", "break", "continue", "if", "fi", "else",
-                    "then", "new", "Array", "return", "in_string", "in_int", "print", "len"));
-    public static List<String> operatorsArray = new ArrayList<String>(
-            Arrays.asList("+", "-", "*", "/", "%", "+=", "*=",
-                    "-=", "/=", "++", "--", "<", "<=",
-                    ">", ">=", "!=", "==", "=", "&&", "&", "||", "^", ".", "“",
-                    "!", ",", ";", "[", "]", "(", ")", "{", "}"));
-
-
-    public static void main(String[] args) throws IOException {
-        SyntaxHighlighter syntaxHighlighter = new SyntaxHighlighter();
-        Scanner input = new Scanner(new FileReader("src/testInput.txt"));
-        while (true) {
-            Symbol currentToken = input.nextToken();
-            if (input.yyatEOF()) {
-                break;
-            }
-//            if (currentToken.getToken().equals("$")) {
-//                break;
-//            }
-            if (!currentToken.getToken().startsWith("Error")) {
-                syntaxHighlighter.addHtmlText(currentToken.toString(), getTokenType(currentToken.getToken()));
-            }
-            else {
-                System.out.println(ANSI_RED + currentToken.toString() + ANSI_RESET);
-            }
-            syntaxHighlighter.writeToHtml(syntaxHighlighter.getDocument().outerHtml(),"src/OutputHtmlHighlighter.html");
+    public static void parseAndWrite(String outputFilePath, Parser parser) throws IOException {
+        File file = new File(outputFilePath);
+        FileWriter fileWriter = new FileWriter(file);
+        try {
+            parser.parse();
+            fileWriter.write("Syntax is correct!");
+        } catch (Exception e) {
+            fileWriter.write("Syntax is wrong!");
         }
     }
 
-    private static String getTokenType(String tokenValue) {
-        if (keywordsArray.contains(tokenValue)) {
-            return RESERVED_KEYWORDS;
+    public static void main(String[] args) throws IOException {
+        String inputCoolFilePath = "";
+        String outputFilePath = "";
+        String tablePath = "";
+        if (args.length >= 6) {
+            for (int i = 0; i < args.length; i++) {
+                if (args[i].equals("--input")) {
+                    inputCoolFilePath = args[i + 1];
+                }
+                if (args[i].equals("--output")) {
+                    outputFilePath = args[i + 1];
+                }
+                if (args[i].equals("--table")) {
+                    tablePath = args[i + 1];
+                }
+            }
+        } else {
+            System.out.println("Run like bellow:\njava <javaClassFile> --input <inputCoolFilePath> --output <outputFilePath> --table <tablePath>");
+            return;
         }
-        if (operatorsArray.contains(tokenValue)) {
-            return OPERATORS_AND_PUNCTUATIONS;
-        }
-        switch (tokenValue) {
-            case "identifier":
-                return IDENTIFIERS;
-            case "decimal":
-            case "hexadecimal":
-                return INTEGER_NUMBERS;
-            case "realNumber":
-            case "scientificNotation":
-                return REAL_NUMBERS;
-            case "stringLiteral":
-                return STRINGS;
-            case "specialCharacter":
-                return SPECIAL_CHARACTERS;
-            case "comment":
-                return COMMENTS;
-            case "lineTerminate":
-                return LINE_TERMINATOR;
-            default:
-                return UNDEFINED_TOKEN;
-        }
+        // inputCoolFilePath can be like this: ./test/test1.cool
+        // outputFilePath can be like this: ./out/test1.txt
+        // tablePath can be like this: ./src/table.npt
+
+        // Make a new instance of your parser that reads scanner tokens
+        // and then call "parse" method of your parser
+
+        // write the result of parsing in the outputFilePath.
+        // if the syntax is correct you should write "Syntax is correct!"
+        // and if the syntax is wrong, you should write "Syntax is wrong!" in outputFilePath.
+
+        LexicalScanner scanner = new LexicalScanner(new FileReader(inputCoolFilePath));
+        CodeGenerator codeGenerator = new CodeGeneratorImpl();
+        Parser parser = new Parser(scanner, codeGenerator, tablePath);
+
+        parseAndWrite(outputFilePath, parser);
+
+
     }
 }

@@ -1,19 +1,36 @@
 
 %%
 
-%class Scanner
+%class LexicalScanner
 %public
 %unicode
 %line
 %column
-%function nextToken
+%function nextSymbol
 %type Symbol
+%implements Lexical
 
 %{
     public int ICV = 0;
     public boolean BOOL = false;
     public double REAL = 0;
     public StringBuilder string = new StringBuilder();
+
+    private Symbol currSymbol = null;
+
+    public Symbol currentSymbol() {
+        return currSymbol;
+    }
+
+    public String nextToken() {
+        try {
+            currSymbol = nextSymbol();
+            return currSymbol.getToken();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     private double getValueOfScientificNumber(String scientific) {
         int index = 0;
@@ -196,7 +213,7 @@ ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static
     "." { return (new Symbol(".")); }
     "“" { return (new Symbol("“")); }
     "!" { return (new Symbol("!")); }
-    "," { return (new Symbol(",")); }
+    "," { return (new Symbol("comma")); }
     ";" { return (new Symbol(";")); }
     "[" { return (new Symbol("[")); }
     "]" { return (new Symbol("]")); }
