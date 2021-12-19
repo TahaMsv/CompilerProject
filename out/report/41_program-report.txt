@@ -308,25 +308,25 @@ Current cell of parser table: target-node=110 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='len' id=65
 Current node: 110
-Current cell of parser table: target-node=198 action=PUSH_GOTO function=[]
+Current cell of parser table: target-node=200 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='len' id=65
-Current node: 198
-Current cell of parser table: target-node=199 action=SHIFT function=[]
---------------------------------------------------
-Execute semantic codes: []
-Current token: text='(' id=16
-Current node: 199
-Current cell of parser table: target-node=200 action=SHIFT function=[]
---------------------------------------------------
-Execute semantic codes: []
-Current token: text='identifier' id=2
 Current node: 200
 Current cell of parser table: target-node=201 action=SHIFT function=[]
 --------------------------------------------------
 Execute semantic codes: []
-Current token: text=')' id=17
+Current token: text='(' id=16
 Current node: 201
+Current cell of parser table: target-node=202 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='identifier' id=2
+Current node: 202
+Current cell of parser table: target-node=203 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 203
 Current cell of parser table: target-node=95 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
@@ -340,6 +340,6 @@ Current node: 47
 Current cell of parser table: target-node=-1 action=ERROR function=[]
 --------------------------------------------------
 Error happened while parsing ...
-At node 201: current token is ) but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue]
+At node 203: current token is ) but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue]
 At node 109: current token is ) but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue]
 At node 47: current token is ) but except: [identifier, }, let, ;, if, fi, else, pool, while, for, rof, return, print, break, continue]

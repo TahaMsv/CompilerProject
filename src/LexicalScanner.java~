@@ -896,7 +896,7 @@ public class LexicalScanner implements Lexical {
             // fall through
           case 74: break;
           case 3:
-            { return new Symbol("lineTerminate");
+            { //        return new Symbol("lineTerminate");
             }
             // fall through
           case 75: break;
@@ -1021,7 +1021,7 @@ public class LexicalScanner implements Lexical {
           case 98: break;
           case 27:
             { string.append(yytext());
-        return new Symbol("stringLiteral", yytext());
+//        return new Symbol("stringLiteral", yytext());
             }
             // fall through
           case 99: break;
@@ -1117,7 +1117,7 @@ public class LexicalScanner implements Lexical {
           case 116: break;
           case 45:
             { string.append(yytext());
-        return new Symbol("specialCharacter", yytext());
+//        return new Symbol("specialCharacter", yytext());
             }
             // fall through
           case 117: break;

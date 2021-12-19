@@ -103,7 +103,7 @@ SpecialCharacters = "\\n" | "\\t" | "\\r" | "\\'" |  "\\\"" | ("\\"{2})
 ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static"
                     | "class" | "for" | "rof" | "loop" | "pool" | "while" | "break" 
                     | "continue" | "if" | "fi" | "else" | "then" | "new" | "Array"
-                    | "return" | "in_string" | "in_int" | "print" | "len"
+                    | "return" | "in_string()" | "in_int()" | "print" | "len"
 
 %state String
  
@@ -175,11 +175,11 @@ ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static
     "return" {
         return (new Symbol("return"));
     }
-    "in_string" {
-        return (new Symbol("in_string"));
+    "in_string()" {
+        return (new Symbol("in_string()"));
     }
-    "in_int" {
-        return (new Symbol("in_int"));
+    "in_int()" {
+        return (new Symbol("in_int()"));
     }
     "print" {
         return (new Symbol("print"));
@@ -274,12 +274,12 @@ ReservedKeywords = "let" | "void" | "int" | "real" | "bool" | "string" | "static
 <String> {
     {InputCharacter}+ {
         string.append(yytext());
-        return new Symbol("stringLiteral", yytext());
+//        return new Symbol("stringLiteral", yytext());
     }
 
     {SpecialCharacters} {
         string.append(yytext());
-        return new Symbol("specialCharacter", yytext());
+//        return new Symbol("specialCharacter", yytext());
     }
 
     \" {

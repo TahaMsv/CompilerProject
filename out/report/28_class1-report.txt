@@ -205,174 +205,475 @@ Current cell of parser table: target-node=110 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
 Current node: 110
-Current cell of parser table: target-node=128 action=PUSH_GOTO function=[]
+Current cell of parser table: target-node=129 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 128
-Current cell of parser table: target-node=134 action=PUSH_GOTO function=[]
+Current node: 129
+Current cell of parser table: target-node=135 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 134
-Current cell of parser table: target-node=137 action=PUSH_GOTO function=[]
+Current node: 135
+Current cell of parser table: target-node=138 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 137
-Current cell of parser table: target-node=140 action=PUSH_GOTO function=[]
+Current node: 138
+Current cell of parser table: target-node=141 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 140
-Current cell of parser table: target-node=143 action=PUSH_GOTO function=[]
+Current node: 141
+Current cell of parser table: target-node=144 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 143
-Current cell of parser table: target-node=146 action=PUSH_GOTO function=[]
+Current node: 144
+Current cell of parser table: target-node=147 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 146
-Current cell of parser table: target-node=149 action=PUSH_GOTO function=[]
+Current node: 147
+Current cell of parser table: target-node=150 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 149
-Current cell of parser table: target-node=153 action=PUSH_GOTO function=[]
+Current node: 150
+Current cell of parser table: target-node=154 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 153
-Current cell of parser table: target-node=157 action=PUSH_GOTO function=[]
+Current node: 154
+Current cell of parser table: target-node=158 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 157
-Current cell of parser table: target-node=161 action=PUSH_GOTO function=[]
+Current node: 158
+Current cell of parser table: target-node=162 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 161
-Current cell of parser table: target-node=166 action=PUSH_GOTO function=[]
+Current node: 162
+Current cell of parser table: target-node=167 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 166
-Current cell of parser table: target-node=170 action=PUSH_GOTO function=[]
+Current node: 167
+Current cell of parser table: target-node=171 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 170
-Current cell of parser table: target-node=173 action=PUSH_GOTO function=[]
+Current node: 171
+Current cell of parser table: target-node=174 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 173
-Current cell of parser table: target-node=176 action=PUSH_GOTO function=[]
+Current node: 174
+Current cell of parser table: target-node=177 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 176
-Current cell of parser table: target-node=186 action=PUSH_GOTO function=[]
+Current node: 177
+Current cell of parser table: target-node=187 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='decimal' id=62
-Current node: 186
-Current cell of parser table: target-node=187 action=SHIFT function=[]
+Current node: 187
+Current cell of parser table: target-node=188 action=SHIFT function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 187
+Current node: 188
 Current cell of parser table: target-node=76 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 177
+Current node: 178
 Current cell of parser table: target-node=74 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 175
+Current node: 176
 Current cell of parser table: target-node=89 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 172
+Current node: 173
 Current cell of parser table: target-node=90 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 167
+Current node: 168
 Current cell of parser table: target-node=87 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 162
+Current node: 163
 Current cell of parser table: target-node=88 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 158
+Current node: 159
 Current cell of parser table: target-node=104 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 154
+Current node: 155
 Current cell of parser table: target-node=103 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 150
+Current node: 151
 Current cell of parser table: target-node=102 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 147
+Current node: 148
 Current cell of parser table: target-node=100 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 144
+Current node: 145
 Current cell of parser table: target-node=99 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 141
+Current node: 142
 Current cell of parser table: target-node=98 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 138
+Current node: 139
 Current cell of parser table: target-node=97 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 135
+Current node: 136
 Current cell of parser table: target-node=96 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 129
+Current node: 130
 Current cell of parser table: target-node=94 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
 Current node: 109
+Current cell of parser table: target-node=111 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='identifier' id=2
+Current node: 111
 Current cell of parser table: target-node=105 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
-Current token: text=';' id=6
+Current token: text='identifier' id=2
 Current node: 47
 Current cell of parser table: target-node=78 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
-Current token: text=';' id=6
+Current token: text='identifier' id=2
 Current node: 62
+Current cell of parser table: target-node=66 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='identifier' id=2
+Current node: 42
+Current cell of parser table: target-node=61 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='identifier' id=2
+Current node: 61
+Current cell of parser table: target-node=44 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='identifier' id=2
+Current node: 44
+Current cell of parser table: target-node=45 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='=' id=19
+Current node: 45
+Current cell of parser table: target-node=46 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='new' id=35
+Current node: 46
+Current cell of parser table: target-node=110 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='new' id=35
+Current node: 110
+Current cell of parser table: target-node=125 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='new' id=35
+Current node: 125
+Current cell of parser table: target-node=126 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='Array' id=36
+Current node: 126
+Current cell of parser table: target-node=127 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='(' id=16
+Current node: 127
+Current cell of parser table: target-node=128 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='real' id=8
+Current node: 128
+Current cell of parser table: target-node=14 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='real' id=8
+Current node: 14
+Current cell of parser table: target-node=15 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='comma' id=18
+Current node: 15
+Current cell of parser table: target-node=81 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='comma' id=18
+Current node: 121
+Current cell of parser table: target-node=122 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='decimal' id=62
+Current node: 122
+Current cell of parser table: target-node=110 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 110
+Current cell of parser table: target-node=129 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 129
+Current cell of parser table: target-node=135 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 135
+Current cell of parser table: target-node=138 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 138
+Current cell of parser table: target-node=141 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 141
+Current cell of parser table: target-node=144 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 144
+Current cell of parser table: target-node=147 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 147
+Current cell of parser table: target-node=150 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 150
+Current cell of parser table: target-node=154 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 154
+Current cell of parser table: target-node=158 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 158
+Current cell of parser table: target-node=162 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 162
+Current cell of parser table: target-node=167 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 167
+Current cell of parser table: target-node=171 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 171
+Current cell of parser table: target-node=174 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 174
+Current cell of parser table: target-node=177 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 177
+Current cell of parser table: target-node=187 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='decimal' id=62
+Current node: 187
+Current cell of parser table: target-node=188 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 188
+Current cell of parser table: target-node=76 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 178
+Current cell of parser table: target-node=74 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 176
+Current cell of parser table: target-node=89 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 173
+Current cell of parser table: target-node=90 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 168
+Current cell of parser table: target-node=87 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 163
+Current cell of parser table: target-node=88 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 159
+Current cell of parser table: target-node=104 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 155
+Current cell of parser table: target-node=103 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 151
+Current cell of parser table: target-node=102 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 148
+Current cell of parser table: target-node=100 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 145
+Current cell of parser table: target-node=99 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 142
+Current cell of parser table: target-node=98 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 139
+Current cell of parser table: target-node=97 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 136
+Current cell of parser table: target-node=96 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 130
+Current cell of parser table: target-node=94 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 109
+Current cell of parser table: target-node=105 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=')' id=17
+Current node: 123
+Current cell of parser table: target-node=124 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=';' id=6
+Current node: 124
+Current cell of parser table: target-node=83 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=';' id=6
+Current node: 109
+Current cell of parser table: target-node=111 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='let' id=5
+Current node: 111
+Current cell of parser table: target-node=105 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='let' id=5
+Current node: 47
+Current cell of parser table: target-node=78 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='let' id=5
+Current node: 62
+Current cell of parser table: target-node=66 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='let' id=5
+Current node: 42
+Current cell of parser table: target-node=61 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='let' id=5
+Current node: 61
+Current cell of parser table: target-node=10 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='let' id=5
+Current node: 10
+Current cell of parser table: target-node=11 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='int' id=7
+Current node: 11
+Current cell of parser table: target-node=34 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='int' id=7
+Current node: 34
+Current cell of parser table: target-node=14 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='int' id=7
+Current node: 14
+Current cell of parser table: target-node=15 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='identifier' id=2
+Current node: 15
+Current cell of parser table: target-node=81 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='identifier' id=2
+Current node: 38
+Current cell of parser table: target-node=39 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=';' id=6
+Current node: 39
+Current cell of parser table: target-node=75 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text=';' id=6
+Current node: 12
+Current cell of parser table: target-node=13 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='for' id=27
+Current node: 13
+Current cell of parser table: target-node=68 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='for' id=27
+Current node: 62
+Current cell of parser table: target-node=66 action=REDUCE function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='for' id=27
+Current node: 42
+Current cell of parser table: target-node=61 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='for' id=27
+Current node: 61
+Current cell of parser table: target-node=81 action=PUSH_GOTO function=[]
+--------------------------------------------------
+Current token: text='for' id=27
+Current node: 81
+Current cell of parser table: target-node=82 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='(' id=16
+Current node: 82
 Current cell of parser table: target-node=-1 action=ERROR function=[]
 --------------------------------------------------
 Error happened while parsing ...
-At node 187: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=, ||, &&, |, ^, &, ==, !=, >, <, >=, <=, +, -, *, /, %, ++, --]
-At node 177: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=, ||, &&, |, ^, &, ==, !=, >, <, >=, <=, +, -, *, /, %, ++, --]
-At node 175: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=, ||, &&, |, ^, &, ==, !=, >, <, >=, <=, +, -, *, /, %, ++, --]
-At node 172: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=, ||, &&, |, ^, &, ==, !=, >, <, >=, <=, +, -, *, /, %, ++, --]
-At node 167: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=, ||, &&, |, ^, &, ==, !=, >, <, >=, <=, +, -, *, /, %, ++, --]
-At node 162: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=, ||, &&, |, ^, &, ==, !=, >, <, >=, <=, +, -, *, /, %]
-At node 158: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=, ||, &&, |, ^, &, ==, !=, >, <, >=, <=, +, -]
-At node 154: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=, ||, &&, |, ^, &, ==, !=, >, <, >=, <=]
-At node 150: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=, ||, &&, |, ^, &, ==, !=]
-At node 147: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=, ||, &&, |, ^, &]
-At node 144: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=, ||, &&, |, ^]
-At node 141: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=, ||, &&, |]
-At node 138: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=, ||, &&]
-At node 135: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=, ||]
-At node 129: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue, /=, *=, +=, -=]
-At node 109: current token is ; but except: [identifier, }, let, ;, ], ), comma, =, if, fi, else, pool, while, for, rof, return, print, break, continue]
-At node 47: current token is ; but except: [identifier, }, let, ;, if, fi, else, pool, while, for, rof, return, print, break, continue]
-At node 62: current token is ; but except: [identifier, }, let, if, fi, else, pool, while, for, rof, return, print, break, continue]
+At node 82: current token is ( but except: [identifier, ;, ASSIGNMENT]
