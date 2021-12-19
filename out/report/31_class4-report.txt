@@ -32,10 +32,10 @@ Current cell of parser table: target-node=11 action=SHIFT function=[]
 Execute semantic codes: []
 Current token: text='int' id=7
 Current node: 11
-Current cell of parser table: target-node=34 action=PUSH_GOTO function=[]
+Current cell of parser table: target-node=33 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='int' id=7
-Current node: 34
+Current node: 33
 Current cell of parser table: target-node=14 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='int' id=7
@@ -49,12 +49,12 @@ Current cell of parser table: target-node=81 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text='identifier' id=2
-Current node: 38
-Current cell of parser table: target-node=39 action=SHIFT function=[]
+Current node: 37
+Current cell of parser table: target-node=38 action=SHIFT function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 39
+Current node: 38
 Current cell of parser table: target-node=75 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
@@ -70,49 +70,49 @@ Current cell of parser table: target-node=68 action=REDUCE function=[]
 Execute semantic codes: []
 Current token: text='void' id=15
 Current node: 9
-Current cell of parser table: target-node=40 action=PUSH_GOTO function=[]
+Current cell of parser table: target-node=39 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='void' id=15
-Current node: 40
-Current cell of parser table: target-node=26 action=PUSH_GOTO function=[]
+Current node: 39
+Current cell of parser table: target-node=28 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='void' id=15
-Current node: 26
-Current cell of parser table: target-node=27 action=SHIFT function=[]
---------------------------------------------------
-Execute semantic codes: []
-Current token: text='identifier' id=2
-Current node: 27
-Current cell of parser table: target-node=28 action=SHIFT function=[]
---------------------------------------------------
-Execute semantic codes: []
-Current token: text='(' id=16
 Current node: 28
 Current cell of parser table: target-node=29 action=SHIFT function=[]
 --------------------------------------------------
 Execute semantic codes: []
-Current token: text=')' id=17
+Current token: text='identifier' id=2
 Current node: 29
+Current cell of parser table: target-node=30 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='(' id=16
+Current node: 30
 Current cell of parser table: target-node=31 action=SHIFT function=[]
 --------------------------------------------------
 Execute semantic codes: []
-Current token: text='{' id=3
+Current token: text=')' id=17
 Current node: 31
+Current cell of parser table: target-node=25 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='{' id=3
+Current node: 25
 Current cell of parser table: target-node=84 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text='{' id=3
+Current node: 40
+Current cell of parser table: target-node=41 action=SHIFT function=[]
+--------------------------------------------------
+Execute semantic codes: []
+Current token: text='}' id=4
 Current node: 41
 Current cell of parser table: target-node=42 action=SHIFT function=[]
 --------------------------------------------------
 Execute semantic codes: []
-Current token: text='}' id=4
-Current node: 42
-Current cell of parser table: target-node=43 action=SHIFT function=[]
---------------------------------------------------
-Execute semantic codes: []
 Current token: text='let' id=5
-Current node: 43
+Current node: 42
 Current cell of parser table: target-node=70 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
@@ -127,10 +127,10 @@ Current cell of parser table: target-node=11 action=SHIFT function=[]
 Execute semantic codes: []
 Current token: text='int' id=7
 Current node: 11
-Current cell of parser table: target-node=34 action=PUSH_GOTO function=[]
+Current cell of parser table: target-node=33 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='int' id=7
-Current node: 34
+Current node: 33
 Current cell of parser table: target-node=14 action=PUSH_GOTO function=[]
 --------------------------------------------------
 Current token: text='int' id=7
@@ -144,12 +144,12 @@ Current cell of parser table: target-node=81 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text='identifier' id=2
-Current node: 38
-Current cell of parser table: target-node=39 action=SHIFT function=[]
+Current node: 37
+Current cell of parser table: target-node=38 action=SHIFT function=[]
 --------------------------------------------------
 Execute semantic codes: []
 Current token: text=';' id=6
-Current node: 39
+Current node: 38
 Current cell of parser table: target-node=75 action=REDUCE function=[]
 --------------------------------------------------
 Execute semantic codes: []
@@ -202,4 +202,4 @@ Current node: 5
 Current cell of parser table: target-node=-1 action=ERROR function=[]
 --------------------------------------------------
 Error happened while parsing ...
-At node 5: current token is } but except: [let, int, real, string, bool, void, ClassBODY]
+At node 5: current token is } but except: [identifier, let, int, real, string, bool, void, ClassBODY]
