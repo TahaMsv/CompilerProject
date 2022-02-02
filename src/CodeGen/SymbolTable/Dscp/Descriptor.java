@@ -2,7 +2,7 @@ package CodeGen.SymbolTable.Dscp;
 import CodeGen.Type;
 import java.util.Objects;
 
-public abstract class Descriptor {
+public class Descriptor {
     private String addressName;
     private Type type;
     private boolean isLocal;
