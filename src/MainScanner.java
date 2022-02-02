@@ -34,7 +34,7 @@ public class MainScanner {
 
 
     public static void main(String[] args) throws IOException {
-        SyntaxHighlighter syntaxHighlighter = new SyntaxHighlighter();
+//        SyntaxHighlighter syntaxHighlighter = new SyntaxHighlighter();
         LexicalScanner input = new LexicalScanner(new FileReader("src/testInput.txt"));
         while (true) {
             Symbol currentToken = input.currentSymbol();
@@ -42,7 +42,7 @@ public class MainScanner {
                 break;
             }
             if (!currentToken.getToken().startsWith("Error")) {
-                syntaxHighlighter.addHtmlText(currentToken.toString(), getTokenType(currentToken.getToken()));
+//                syntaxHighlighter.addHtmlText(currentToken.toString(), getTokenType(currentToken.getToken()));
             }
             else {
                 System.out.println(ANSI_RED + currentToken.toString() + ANSI_RESET);
