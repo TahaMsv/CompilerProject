@@ -1,8 +1,8 @@
-package CodeGen.SymbolTable.Dscp;
+package CodeGen.SymbolTable;
 import CodeGen.Type;
 import java.util.Objects;
 
-public class Descriptor {
+public abstract class Descriptor {
     private String addressName;
     private Type type;
     private boolean isLocal;

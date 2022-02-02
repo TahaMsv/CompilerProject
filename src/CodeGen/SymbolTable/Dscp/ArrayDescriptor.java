@@ -1,5 +1,6 @@
 package CodeGen.SymbolTable.Dscp;
 
+import CodeGen.SymbolTable.Descriptor;
 import CodeGen.Type;
 
 
