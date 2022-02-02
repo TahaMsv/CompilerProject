@@ -1,4 +1,24 @@
+package CodeGen;
+
 public class CodeGeneratorImpl implements CodeGenerator {
+
+    private static int variableIndex = 0;
+    private static int labelIndex = 0;
+
+    private static int getVariableIndex() {
+        return variableIndex;
+    }
+
+    private static void incrementVariableIndex() {
+        ++variableIndex;
+    }
+
+
+    public static String getVariableName() {
+        incrementVariableIndex();
+        return "adr" + getVariableIndex();
+    }
+
     @Override
     public void doSemantic(String sem) {
 
