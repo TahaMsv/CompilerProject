@@ -4,7 +4,9 @@ import CodeGen.Ast.Expressions.InputReader;
 import CodeGen.Ast.Statements.Assignment;
 import CodeGen.Ast.Statements.Printer;
 import CodeGen.SymbolTable.Descriptor;
+import CodeGen.SymbolTable.Dscp.VariableDescriptor;
 import CodeGen.SymbolTable.Stacks;
+import CodeGen.Utils.SPIMFileWriter;
 import CodeGen.Utils.Type;
 import ScannerAndParser.LexicalScanner;
 
@@ -23,6 +25,32 @@ public class CodeGeneratorImpl implements CodeGenerator {
         switch (sem) {
             case "addDescriptor":
                 printDebug(sem, "");
+                String name = (String) Stacks.popSemanticS();
+                Object t1 = Stacks.popSemanticS();
+                if (t1 instanceof Type) {
+                    Type t = (Type) t1;
+//                    if (TypeChecker.isArrayType(t)) {
+//                        ArrayDescriptor lad = (ArrayDescriptor) SymbolTableStack.top().getDescriptor(name);
+//                        lad.setRealName(name);
+//                    } else {
+                    if (!Stacks.topSymbolTableS().contains(name)) {
+                        VariableDescriptor lvd = new VariableDescriptor(getVariableName(), t, true);
+                        Stacks.topSymbolTableS().addDescriptor(name, lvd);
+                        if (t != Type.STRING) {
+                            SPIMFileWriter.addCommandToDataSegment(lvd.getName(), "word", "0");
+                        } else {
+                            SPIMFileWriter.addCommandToDataSegment(lvd.getName(), "space", "20");
+
+                        }
+                    } else {
+//                        try {
+////                            throw new NameError(name, true);
+//                        } catch (Exception e2) {
+//                            System.err.println(e2.getMessage());
+//                        }
+                    }
+//                    }
+                }
                 break; //TODO
             case "pushType":
                 Stacks.pushSemanticS(changeStringToType(lexical.currentSymbol().getToken()));
