@@ -1,23 +1,15 @@
 package CodeGen;
 
+import CodeGen.Ast.Expressions.InputReader;
+import CodeGen.Ast.Statements.Assignment;
+import CodeGen.Ast.Statements.Printer;
+import CodeGen.SymbolTable.Descriptor;
+import CodeGen.SymbolTable.Stacks;
+
 public class CodeGeneratorImpl implements CodeGenerator {
 
     private static int variableIndex = 0;
     private static int labelIndex = 0;
-
-    private static int getVariableIndex() {
-        return variableIndex;
-    }
-
-    private static void incrementVariableIndex() {
-        ++variableIndex;
-    }
-
-
-    public static String getVariableName() {
-        incrementVariableIndex();
-        return "adr" + getVariableIndex();
-    }
 
     @Override
     public void doSemantic(String sem) {
@@ -43,7 +35,10 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 break; //TODO
             case "assignment":
                 printDebug(sem, "");
-                break; //TODO
+                Descriptor rValue = (Descriptor) Stacks.popSemanticS();
+                Descriptor lValue = (Descriptor) Stacks.popSemanticS();
+                new Assignment().assign(lValue, rValue);
+                break;
             case "startIf":
                 printDebug(sem, "");
                 break; //TODO
@@ -79,7 +74,8 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 break; //TODO
             case "print":
                 printDebug(sem, "");
-                break; //TODO
+                new Printer().print((Descriptor) Stacks.popSemanticS());
+                break;
             case "break":
                 printDebug(sem, "");
                 break; //TODO
@@ -91,10 +87,12 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 break; //TODO
             case "readInt":
                 printDebug(sem, "");
-                break; //TODO
+                new InputReader().readInt();
+                break;
             case "readString":
                 printDebug(sem, "");
-                break; //TODO
+                new InputReader().readString();
+                break;
             case "setArrayDescriptor":
                 printDebug(sem, "");
                 break; //TODO
@@ -217,4 +215,19 @@ public class CodeGeneratorImpl implements CodeGenerator {
         System.out.println("message : " + message);
         System.out.println("////////////////////////////");
     }
+    private static int getVariableIndex() {
+        return variableIndex;
+    }
+
+    private static void incrementVariableIndex() {
+        ++variableIndex;
+    }
+
+
+    public static String getVariableName() {
+        incrementVariableIndex();
+        return "adr" + getVariableIndex();
+    }
+
+
 }

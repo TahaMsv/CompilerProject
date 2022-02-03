@@ -1,7 +1,7 @@
 package CodeGen.SymbolTable.Dscp;
 
 import CodeGen.SymbolTable.Descriptor;
-import CodeGen.Type;
+import CodeGen.Utils.Type;
 
 
 class ArrayDescriptor extends Descriptor {

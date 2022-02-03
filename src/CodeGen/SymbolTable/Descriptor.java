@@ -1,5 +1,5 @@
 package CodeGen.SymbolTable;
-import CodeGen.Type;
+import CodeGen.Utils.Type;
 import java.util.Objects;
 
 public abstract class Descriptor {

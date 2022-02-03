@@ -1,38 +1,44 @@
 package CodeGen.Ast.Expressions;
 
 import CodeGen.CodeGeneratorImpl;
+import CodeGen.SymbolTable.Dscp.VariableDescriptor;
+import CodeGen.SymbolTable.Stacks;
+import CodeGen.Utils.Type;
 import CodeGen.Utils.SPIMFileWriter;
 
-import java.util.List;
+import java.util.Arrays;
+import java.util.Collections;
+
 
 public class InputReader {
 
-    public static void readInt() {
+    public void readInt() {
         SPIMFileWriter.addCommentToCode("Read int from console");
-        SPIMFileWriter.addCommandToCode("li", List.of("$v0", "5"));
-        SPIMFileWriter.addCommandToCode("syscall", List.of());
-        SPIMFileWriter.addCommandToCode("move", List.of("$t0", "$v0"));
+        SPIMFileWriter.addCommandToCode("li", Arrays.asList("$v0", "5"));
+        SPIMFileWriter.addCommandToCode("syscall", Collections.emptyList());
+        SPIMFileWriter.addCommandToCode("move", Arrays.asList("$t0", "$v0"));
 
         String variableName = CodeGeneratorImpl.getVariableName();
         SPIMFileWriter.addCommandToDataSegment(variableName, "word", "0");
-        SPIMFileWriter.addCommandToCode("la", List.of("$t1", variableName));
-        SPIMFileWriter.addCommandToCode("sw", List.of("$t0", "0($t1)"));
-//        SemanticStack.push(new LocalVariableDescriptor(variableName, Type.INTEGER_NUMBER));
+        SPIMFileWriter.addCommandToCode("la", Arrays.asList("$t1", variableName));
+        SPIMFileWriter.addCommandToCode("sw", Arrays.asList("$t0", "0($t1)"));
+        VariableDescriptor vd = new VariableDescriptor(variableName, Type.INTEGER_NUMBER, true);
+        Stacks.pushSemanticS(vd);
     }
 
-    public static void readString() {
+    public void readString() {
         SPIMFileWriter.addCommentToCode("Read string from console");
-        SPIMFileWriter.addCommandToCode("li", List.of("$v0", "8"));
-        SPIMFileWriter.addCommandToCode("la", List.of("$a0", "strbuffer"));
-        SPIMFileWriter.addCommandToCode("li", List.of("$a1", "20"));
-        SPIMFileWriter.addCommandToCode("move", List.of("$t0", "$a0"));
-        SPIMFileWriter.addCommandToCode("sw", List.of("$t0", "stradr"));
+        SPIMFileWriter.addCommandToCode("li", Arrays.asList("$v0", "8"));
+        SPIMFileWriter.addCommandToCode("la", Arrays.asList("$a0", "strbuffer"));
+        SPIMFileWriter.addCommandToCode("li", Arrays.asList("$a1", "20"));
+        SPIMFileWriter.addCommandToCode("move", Arrays.asList("$t0", "$a0"));
+        SPIMFileWriter.addCommandToCode("sw", Arrays.asList("$t0", "stradr"));
         String variableName = CodeGeneratorImpl.getVariableName();
-//        LocalVariableDescriptor lvd = new LocalVariableDescriptor(variableName, Type.STRING);
+        VariableDescriptor vd = new VariableDescriptor(variableName, Type.STRING, true);
         SPIMFileWriter.addCommandToDataSegment(variableName, "space", "20");
-//        SPIMFileWriter.addCommandToCode("sw", List.of("$t0", lvd.getName()));
-//        SemanticStack.push(lvd);
-        SPIMFileWriter.addCommandToCode("syscall", List.of());
+        SPIMFileWriter.addCommandToCode("sw", Arrays.asList("$t0", vd.getName()));
+        Stacks.pushSemanticS(vd);
+        SPIMFileWriter.addCommandToCode("syscall", Collections.emptyList());
 
     }
 }

@@ -1,7 +1,7 @@
 package CodeGen.Ast.DCL;
 
 
-import CodeGen.Type;
+import CodeGen.Utils.Type;
 
 import java.util.List;
 

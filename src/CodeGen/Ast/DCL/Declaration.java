@@ -1,6 +1,6 @@
 package CodeGen.Ast.DCL;
 
-import CodeGen.Type;
+import CodeGen.Utils.Type;
 
 public class Declaration {
     private String name;

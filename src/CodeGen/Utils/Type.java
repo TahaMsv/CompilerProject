@@ -1,13 +1,13 @@
-package CodeGen;
+package CodeGen.Utils;
 
 public enum Type {
 //    RESERVED_KEYWORD,
 //    IDENTIFIER,
-//    INTEGER_NUMBER,
-//    REAL_NUMBER,
+    INTEGER_NUMBER,
+    REAL_NUMBER,
 //    HEX,
 //    SCIENTIFIC_NOTATION,
-//    STRING,
+    STRING,
 //    ESCAPE_CHAR,
 //    COMMENT,
 //    OPERATOR_AND_PUNCTUATION,

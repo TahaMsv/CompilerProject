@@ -1,6 +1,6 @@
 package CodeGen.SymbolTable.Dscp;
 import CodeGen.SymbolTable.Descriptor;
-import CodeGen.Type;
+import CodeGen.Utils.Type;
 
 
 public class FunctionDescriptor extends Descriptor {
