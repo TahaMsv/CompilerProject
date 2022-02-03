@@ -1,4 +1,4 @@
-package CodeGen.Expressions.InputReader;
+package CodeGen.Ast.Expressions;
 
 import CodeGen.CodeGeneratorImpl;
 import CodeGen.Utils.SPIMFileWriter;
