@@ -1,3 +1,5 @@
+package ScannerAndParser;
+
 import CodeGen.CodeGenerator;
 
 import java.io.*;

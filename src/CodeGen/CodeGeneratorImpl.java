@@ -5,11 +5,17 @@ import CodeGen.Ast.Statements.Assignment;
 import CodeGen.Ast.Statements.Printer;
 import CodeGen.SymbolTable.Descriptor;
 import CodeGen.SymbolTable.Stacks;
+import CodeGen.Utils.Type;
+import ScannerAndParser.LexicalScanner;
 
 public class CodeGeneratorImpl implements CodeGenerator {
-
+    public static LexicalScanner lexical;
     private static int variableIndex = 0;
     private static int labelIndex = 0;
+
+    public static void initCodeGenerator(LexicalScanner scanner) {
+        lexical = scanner;
+    }
 
     @Override
     public void doSemantic(String sem) {
@@ -19,8 +25,9 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 printDebug(sem, "");
                 break; //TODO
             case "pushType":
+                Stacks.pushSemanticS(changeStringToType(lexical.currentSymbol().getToken()));
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "arrayAccess":
                 printDebug(sem, "");
                 break; //TODO
@@ -205,8 +212,14 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 printDebug(sem, "");
                 break; //TODO
             case "pushIdDcl":
+
+                //TODO  check types
+//                DescriptorChecker.checkNotContainsDescriptor(lexical.currentSymbol().getToken());
+//                DescriptorChecker.checkNotContainsDescriptorGlobal(lexical.currentSymbol().getToken());
+
+                Stacks.pushSemanticS(lexical.currentSymbol().getToken());
                 printDebug(sem, "");
-                break; //TODO
+                break;
         }
     }
 
@@ -215,6 +228,7 @@ public class CodeGeneratorImpl implements CodeGenerator {
         System.out.println("message : " + message);
         System.out.println("////////////////////////////");
     }
+
     private static int getVariableIndex() {
         return variableIndex;
     }
@@ -229,5 +243,44 @@ public class CodeGeneratorImpl implements CodeGenerator {
         return "adr" + getVariableIndex();
     }
 
+//    Type changeArrayTypeToElementType(Type arrType) {
+//        Type res;
+//        switch (arrType) {
+//            case DOUBLE_ARRAY:
+//                res = Type.REAL_NUMBER;
+//                break;
+//            case INT_ARRAY:
+//                res = Type.INTEGER_NUMBER;
+//                break;
+//            case STRING_ARRAY:
+//                res = Type.STRING;
+//                break;
+//            default:
+//                res = null;
+//        }
+//        return res;
+//    }
 
+
+    Type changeStringToType(String type) {
+        Type res;
+        switch (type) {
+            case "bool":
+            case "int":
+                res = Type.INTEGER_NUMBER;
+                break;
+            case "double":
+                res = Type.REAL_NUMBER;
+                break;
+            case "real":
+                res = Type.REAL_NUMBER;
+                break;
+            case "string":
+                res = Type.STRING;
+                break;
+            default:
+                res = null;
+        }
+        return res;
+    }
 }

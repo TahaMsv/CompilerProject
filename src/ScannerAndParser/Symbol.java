@@ -1,4 +1,6 @@
-class Symbol {
+package ScannerAndParser;
+
+public class Symbol {
     private String token;
     private Object value;
 
