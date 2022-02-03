@@ -5,20 +5,13 @@ import java.util.Map;
 
 public class SymbolTable {
     private String scopeName;
-    private boolean isGlobal;
 
-    public SymbolTable(String scopeName, boolean isGlobal) {
+
+    public SymbolTable(String scopeName) {
         this.scopeName = scopeName;
-        this.isGlobal = isGlobal;
+
     }
 
-    public boolean isGlobal() {
-        return isGlobal;
-    }
-
-    public void setGlobal(boolean global) {
-        isGlobal = global;
-    }
 
     private Map<String, Descriptor> symbolTable = new HashMap<>();
 

@@ -112,15 +112,15 @@ public class Parser {
         while (!accepted) {
             String tokenText = symbols[tokenID];
             LLCell cell = parseTable[currentNode][tokenID];
-            if (debugMode) {
-                System.out.println("Current token: text='" + symbols[tokenID] + "' id=" + tokenID);
-                System.out.println("Current node: " + currentNode);
-                System.out.println("Current cell of parser table: " +
-                        "target-node=" + cell.getTarget() +
-                        " action=" + cell.getAction() +
-                        " function=" + cell.getFunction());
-                System.out.println(String.join("", Collections.nCopies(50, "-")));
-            }
+//            if (debugMode) {
+//                System.out.println("Current token: text='" + symbols[tokenID] + "' id=" + tokenID);
+//                System.out.println("Current node: " + currentNode);
+//                System.out.println("Current cell of parser table: " +
+//                        "target-node=" + cell.getTarget() +
+//                        " action=" + cell.getAction() +
+//                        " function=" + cell.getFunction());
+//                System.out.println(String.join("", Collections.nCopies(50, "-")));
+//            }
             switch (cell.getAction()) {
                 case ERROR:
                     updateRecoveryState(currentNode, tokenText);

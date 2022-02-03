@@ -5,6 +5,7 @@ import CodeGen.Ast.Statements.Assignment;
 import CodeGen.Ast.Statements.Printer;
 import CodeGen.SymbolTable.Descriptor;
 import CodeGen.SymbolTable.Dscp.VariableDescriptor;
+import CodeGen.SymbolTable.GlobalSymbolTable;
 import CodeGen.SymbolTable.Stacks;
 import CodeGen.Utils.SPIMFileWriter;
 import CodeGen.Utils.Type;
@@ -23,10 +24,25 @@ public class CodeGeneratorImpl implements CodeGenerator {
     public void doSemantic(String sem) {
 
         switch (sem) {
+            case "pushType":
+                Stacks.pushSemanticS(changeStringToType(lexical.currentSymbol().getToken()));
+
+                printDebug(sem, Stacks.printSemanticSSIze()+" " + Stacks.printSymbolTableSIze());
+                break;
+            case "pushIdDCL":
+                //TODO  check types
+//                DescriptorChecker.checkNotContainsDescriptor(lexical.currentSymbol().getToken());
+//                DescriptorChecker.checkNotContainsDescriptorGlobal(lexical.currentSymbol().getToken());
+
+                Stacks.pushSemanticS(lexical.currentSymbol().getToken());
+
+                printDebug(sem, Stacks.printSemanticSSIze()+" " + Stacks.printSymbolTableSIze());
+                break;
+
             case "addDescriptor":
-                printDebug(sem, "");
                 String name = (String) Stacks.popSemanticS();
                 Object t1 = Stacks.popSemanticS();
+
                 if (t1 instanceof Type) {
                     Type t = (Type) t1;
 //                    if (TypeChecker.isArrayType(t)) {
@@ -51,10 +67,33 @@ public class CodeGeneratorImpl implements CodeGenerator {
                     }
 //                    }
                 }
-                break; //TODO
-            case "pushType":
-                Stacks.pushSemanticS(changeStringToType(lexical.currentSymbol().getToken()));
-                printDebug(sem, "");
+
+                printDebug(sem, Stacks.printSemanticSSIze()+" " + Stacks.printSymbolTableSIze());
+                break;
+
+            case "pushId":
+                System.out.println(lexical.currentSymbol().getToken());
+                if (!Stacks.isSymbolTableSEmpty() && Stacks.topSymbolTableS().contains(lexical.currentSymbol().getToken())) {
+                    Stacks.pushSemanticS(Stacks.topSymbolTableS().getDescriptor(lexical.currentSymbol().getToken()));
+                } else {
+                    try {
+                        Stacks.pushSemanticS(GlobalSymbolTable.getSymbolTable().getDescriptor(lexical.currentSymbol().getToken()));
+                    } catch (Exception e1) {
+//                        try {
+//                            try {
+//                                System.out.println(407);
+//                                throw new NameError(lexical.currentSymbol.getToken(), false);
+//                            } catch (Exception e2) {
+//                                System.err.println(e2.getMessage());
+//                                System.out.println(410);
+//                            }
+//                        } catch (Exception e2) {
+//                            System.out.println(414);
+//                            System.err.println(e2.getMessage());
+//                        }
+                    }
+                }
+                printDebug(sem, Stacks.printSemanticSSIze()+" " + Stacks.printSymbolTableSIze());
                 break;
             case "arrayAccess":
                 printDebug(sem, "");
@@ -69,10 +108,10 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 printDebug(sem, "");
                 break; //TODO
             case "assignment":
+
+
+                new Assignment().assign();
                 printDebug(sem, "");
-                Descriptor rValue = (Descriptor) Stacks.popSemanticS();
-                Descriptor lValue = (Descriptor) Stacks.popSemanticS();
-                new Assignment().assign(lValue, rValue);
                 break;
             case "startIf":
                 printDebug(sem, "");
@@ -108,8 +147,9 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 printDebug(sem, "");
                 break; //TODO
             case "print":
-                printDebug(sem, "");
+
                 new Printer().print((Descriptor) Stacks.popSemanticS());
+                printDebug(sem, "");
                 break;
             case "break":
                 printDebug(sem, "");
@@ -121,12 +161,12 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 printDebug(sem, "");
                 break; //TODO
             case "readInt":
-                printDebug(sem, "");
                 new InputReader().readInt();
+                printDebug(sem, Stacks.printSemanticSSIze()+" " + Stacks.printSymbolTableSIze());
                 break;
             case "readString":
-                printDebug(sem, "");
                 new InputReader().readString();
+                printDebug(sem, "");
                 break;
             case "setArrayDescriptor":
                 printDebug(sem, "");
@@ -239,15 +279,7 @@ public class CodeGeneratorImpl implements CodeGenerator {
             case "pushArrayIDDcl":
                 printDebug(sem, "");
                 break; //TODO
-            case "pushIdDcl":
 
-                //TODO  check types
-//                DescriptorChecker.checkNotContainsDescriptor(lexical.currentSymbol().getToken());
-//                DescriptorChecker.checkNotContainsDescriptorGlobal(lexical.currentSymbol().getToken());
-
-                Stacks.pushSemanticS(lexical.currentSymbol().getToken());
-                printDebug(sem, "");
-                break;
         }
     }
 

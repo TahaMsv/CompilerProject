@@ -12,6 +12,11 @@ public class SPIMFileWriter {
     private static String code = "";
     private static String data = "";
 
+    public SPIMFileWriter(String filePath) {
+        this.filePath = filePath;
+        createCompiledFile();
+    }
+
     public static void addCommandToCode(String command, List<String> operands) {
         code += ('\t' + command);
         if (operands != null && operands.size() > 0)

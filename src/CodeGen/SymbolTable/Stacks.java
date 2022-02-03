@@ -26,6 +26,11 @@ public class Stacks {
         return semanticStack.isEmpty();
     }
 
+    public static String printSemanticSSIze() {
+        return "Size of SS: " + semanticStack.size();
+
+    }
+
 
     public static SymbolTable pushSymbolTableS(SymbolTable item) {
         return symbolTableStack.push(item);
@@ -41,6 +46,11 @@ public class Stacks {
 
     public static boolean isSymbolTableSEmpty() {
         return symbolTableStack.isEmpty();
+    }
+
+    public static String printSymbolTableSIze() {
+
+        return ("Size of SymbolTable: " + symbolTableStack.size());
     }
 
 }
