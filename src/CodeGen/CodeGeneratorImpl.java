@@ -1,6 +1,7 @@
 package CodeGen;
 
 import CodeGen.Ast.Expressions.InputReader;
+import CodeGen.Ast.Expressions.UnaryAndBinaryExpressions;
 import CodeGen.Ast.Statements.Assignment;
 import CodeGen.Ast.Statements.Printer;
 import CodeGen.SymbolTable.Descriptor;
@@ -184,66 +185,86 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 printDebug(sem, "");
                 break; //TODO
             case "logicalOr":
+                UnaryAndBinaryExpressions.logicalOr();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "logicalAnd":
+                UnaryAndBinaryExpressions.logicalAnd();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "bitwiseOr":
-                printDebug(sem, "");
-                break; //TODO
+                UnaryAndBinaryExpressions.bitwiseOr();
+                break;
             case "bitwiseXor":
+                UnaryAndBinaryExpressions.bitwiseXor();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "bitwiseAnd":
+                UnaryAndBinaryExpressions.bitwiseAnd();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "equal":
+                UnaryAndBinaryExpressions.equal();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "notEqual":
+                UnaryAndBinaryExpressions.notEqual();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "lessEqual":
+                UnaryAndBinaryExpressions.lessEqual();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "greaterEqual":
+                UnaryAndBinaryExpressions.greaterEqual();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "less":
+                UnaryAndBinaryExpressions.less();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "greater":
+                UnaryAndBinaryExpressions.greater();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "add":
+                UnaryAndBinaryExpressions.add();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "sub":
+                UnaryAndBinaryExpressions.sub();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "mod":
+                UnaryAndBinaryExpressions.remainder();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "production":
+                UnaryAndBinaryExpressions.production();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "division":
+                UnaryAndBinaryExpressions.divide();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "decrement":
+                UnaryAndBinaryExpressions.decrement();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "increment":
+                UnaryAndBinaryExpressions.increment();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "not":
+                UnaryAndBinaryExpressions.not();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "negativeSign":
+                UnaryAndBinaryExpressions.negativeSign();
                 printDebug(sem, "");
                 break; //TODO
             case "positiveSign":
+                UnaryAndBinaryExpressions.positiveSign();
                 printDebug(sem, "");
                 break; //TODO
             case "castReal":
@@ -301,6 +322,11 @@ public class CodeGeneratorImpl implements CodeGenerator {
     public static String getVariableName() {
         incrementVariableIndex();
         return "adr" + getVariableIndex();
+    }
+
+    public static String generateNewLabel() {
+        ++labelIndex;
+        return "lbl" + labelIndex;
     }
 
 //    Type changeArrayTypeToElementType(Type arrType) {

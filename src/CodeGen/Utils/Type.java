@@ -13,9 +13,9 @@ public enum Type {
 //    OPERATOR_AND_PUNCTUATION,
 //    WHITESPACE,
 //    UNDEFINED,
-//    INT_ARRAY,
-//    STRING_ARRAY,
-//    DOUBLE_ARRAY,
+    INT_ARRAY,
+    STRING_ARRAY,
+    DOUBLE_ARRAY,
 //    RECORD
     //Todo  type enum
 }
