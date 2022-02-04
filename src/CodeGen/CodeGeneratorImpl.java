@@ -1,5 +1,6 @@
 package CodeGen;
 
+import CodeGen.Ast.Expressions.Cast;
 import CodeGen.Ast.Expressions.InputReader;
 import CodeGen.Ast.Expressions.UnaryAndBinaryExpressions;
 import CodeGen.Ast.Statements.Assignment;
@@ -23,7 +24,8 @@ public class CodeGeneratorImpl implements CodeGenerator {
 
     @Override
     public void doSemantic(String sem) {
-
+        Descriptor des;
+        Type type;
         switch (sem) {
             case "pushType":
                 Stacks.pushSemanticS(changeStringToType(lexical.currentSymbol().getToken()));
@@ -268,11 +270,22 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 printDebug(sem, "");
                 break; //TODO
             case "castReal":
+                des = (Descriptor) Stacks.popSemanticS();
+                 type = (Type) Stacks.popSemanticS();
+               new Cast(des, type,"i2s").castIntToReal();
+//
+//                    String srcType = des.getType().toString();
+//                    String destType = type.toString();
+//                    new CastError(srcType, destType).error(); //Todo typeCasting error
+//
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "castInt":
+                 des = (Descriptor) Stacks.popSemanticS();
+                  type = (Type) Stacks.popSemanticS();
+                new Cast(des, type,"s2i").castRealToInt();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "pushString":
                 printDebug(sem, "");
                 break; //TODO
