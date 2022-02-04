@@ -3,8 +3,7 @@ package CodeGen;
 import CodeGen.Ast.Expressions.Cast;
 import CodeGen.Ast.Expressions.InputReader;
 import CodeGen.Ast.Expressions.UnaryAndBinaryExpressions;
-import CodeGen.Ast.Statements.Assignment;
-import CodeGen.Ast.Statements.Printer;
+import CodeGen.Ast.Statements.*;
 import CodeGen.SymbolTable.Descriptor;
 import CodeGen.SymbolTable.Dscp.VariableDescriptor;
 import CodeGen.SymbolTable.GlobalSymbolTable;
@@ -117,20 +116,32 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 printDebug(sem, "");
                 break;
             case "startIf":
+                new If((Descriptor) Stacks.popSemanticS()).startIf();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "completeIf":
+                If.completeIf();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "else":
+                If.elseCode();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "completeElse":
+                If.completeElse();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "startWhileCondition":
+                While.startCondition();
                 printDebug(sem, "");
-                break; //TODO
+                break;
+            case "whileJumpZero":
+                new While((Descriptor) Stacks.popSemanticS()).startWhileLoop();
+                printDebug(sem, "");
+                break;
+            case "completeWhile":
+                While.completeWhile();
+                printDebug(sem, "");
             case "startLoop":
                 printDebug(sem, "");
                 break; //TODO
@@ -138,11 +149,18 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 printDebug(sem, "");
                 break; //TODO
             case "startForCondition":
+                For.startCondition();
                 printDebug(sem, "");
-                break; //TODO
+                break;
+            case "forJumpZero":
+                new For((Descriptor) Stacks.popSemanticS()).startForLoop();
+                break;
             case "completeFor":
+                For.completeFor();
+                For.stepStatement();
+                For.completeStepOfFor();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "return":
                 printDebug(sem, "");
                 break; //TODO
@@ -150,7 +168,6 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 printDebug(sem, "");
                 break; //TODO
             case "print":
-
                 new Printer().print((Descriptor) Stacks.popSemanticS());
                 printDebug(sem, "");
                 break;

@@ -31,6 +31,15 @@ public class SPIMFileWriter {
         code += ('\t' + comment + '\n');
     }
 
+    public static void addLabel(String name) {
+        code += name + ":\n" ;
+    }
+
+    public static void deleteLabel(String label) {
+        code = code.replaceFirst(label + ":", "");
+    }
+
+
     private void createCompiledFile() {
         try {
             writer = new BufferedWriter(new FileWriter(filePath + OUTPUT_ASSEMBLY_FILE_NAME));
