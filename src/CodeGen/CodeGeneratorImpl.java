@@ -5,11 +5,15 @@ import CodeGen.Ast.Expressions.InputReader;
 import CodeGen.Ast.Expressions.UnaryAndBinaryExpressions;
 import CodeGen.Ast.Statements.*;
 import CodeGen.SymbolTable.Descriptor;
+
+import CodeGen.SymbolTable.Dscp.ArrayDescriptor;
 import CodeGen.SymbolTable.Dscp.VariableDescriptor;
 import CodeGen.SymbolTable.GlobalSymbolTable;
 import CodeGen.SymbolTable.Stacks;
+import CodeGen.Utils.DescriptorChecker;
 import CodeGen.Utils.SPIMFileWriter;
 import CodeGen.Utils.Type;
+import CodeGen.Utils.TypeChecker;
 import ScannerAndParser.LexicalScanner;
 
 public class CodeGeneratorImpl implements CodeGenerator {
@@ -28,79 +32,29 @@ public class CodeGeneratorImpl implements CodeGenerator {
         switch (sem) {
             case "pushType":
                 Stacks.pushSemanticS(changeStringToType(lexical.currentSymbol().getToken()));
-
-                printDebug(sem, Stacks.printSemanticSSIze()+" " + Stacks.printSymbolTableSIze());
+                printDebug(sem, Stacks.printSemanticSSIze() + " " + Stacks.printSymbolTableSIze());
                 break;
             case "pushIdDCL":
-                //TODO  check types
-//                DescriptorChecker.checkNotContainsDescriptor(lexical.currentSymbol().getToken());
-//                DescriptorChecker.checkNotContainsDescriptorGlobal(lexical.currentSymbol().getToken());
-
-                Stacks.pushSemanticS(lexical.currentSymbol().getToken());
-
-                printDebug(sem, Stacks.printSemanticSSIze()+" " + Stacks.printSymbolTableSIze());
+                pushIdDCL();
+                printDebug(sem, Stacks.printSemanticSSIze() + " " + Stacks.printSymbolTableSIze());
                 break;
-
             case "addDescriptor":
-                String name = (String) Stacks.popSemanticS();
-                Object t1 = Stacks.popSemanticS();
-
-                if (t1 instanceof Type) {
-                    Type t = (Type) t1;
-//                    if (TypeChecker.isArrayType(t)) {
-//                        ArrayDescriptor lad = (ArrayDescriptor) SymbolTableStack.top().getDescriptor(name);
-//                        lad.setRealName(name);
-//                    } else {
-                    if (!Stacks.topSymbolTableS().contains(name)) {
-                        VariableDescriptor lvd = new VariableDescriptor(getVariableName(), t, true);
-                        Stacks.topSymbolTableS().addDescriptor(name, lvd);
-                        if (t != Type.STRING) {
-                            SPIMFileWriter.addCommandToDataSegment(lvd.getName(), "word", "0");
-                        } else {
-                            SPIMFileWriter.addCommandToDataSegment(lvd.getName(), "space", "20");
-
-                        }
-                    } else {
-//                        try {
-////                            throw new NameError(name, true);
-//                        } catch (Exception e2) {
-//                            System.err.println(e2.getMessage());
-//                        }
-                    }
-//                    }
-                }
-
-                printDebug(sem, Stacks.printSemanticSSIze()+" " + Stacks.printSymbolTableSIze());
+                addDescriptor();
+                printDebug(sem, Stacks.printSemanticSSIze() + " " + Stacks.printSymbolTableSIze());
                 break;
-
             case "pushId":
-                System.out.println(lexical.currentSymbol().getToken());
-                if (!Stacks.isSymbolTableSEmpty() && Stacks.topSymbolTableS().contains(lexical.currentSymbol().getToken())) {
-                    Stacks.pushSemanticS(Stacks.topSymbolTableS().getDescriptor(lexical.currentSymbol().getToken()));
-                } else {
-                    try {
-                        Stacks.pushSemanticS(GlobalSymbolTable.getSymbolTable().getDescriptor(lexical.currentSymbol().getToken()));
-                    } catch (Exception e1) {
-//                        try {
-//                            try {
-//                                System.out.println(407);
-//                                throw new NameError(lexical.currentSymbol.getToken(), false);
-//                            } catch (Exception e2) {
-//                                System.err.println(e2.getMessage());
-//                                System.out.println(410);
-//                            }
-//                        } catch (Exception e2) {
-//                            System.out.println(414);
-//                            System.err.println(e2.getMessage());
-//                        }
-                    }
-                }
-                printDebug(sem, Stacks.printSemanticSSIze()+" " + Stacks.printSymbolTableSIze());
+                pushId();
+                printDebug(sem, Stacks.printSemanticSSIze() + " " + Stacks.printSymbolTableSIze());
+                break;
+            case "pushIdArrayDCL":
+                pushIdarrayDCl();
+                printDebug(sem, "");
+                break;
+            case "popAndPushArrayType":
+                popAndPushArrayType();
+                printDebug(sem, "");
                 break;
             case "arrayAccess":
-                printDebug(sem, "");
-                break; //TODO
-            case "arrayDcl":
                 printDebug(sem, "");
                 break; //TODO
             case "stratMethod":
@@ -110,8 +64,6 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 printDebug(sem, "");
                 break; //TODO
             case "assignment":
-
-
                 new Assignment().assign();
                 printDebug(sem, "");
                 break;
@@ -131,7 +83,7 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 If.completeElse();
                 printDebug(sem, "");
                 break;
-            case "startWhileCondition":
+            case "startConditionWhile":
                 While.startCondition();
                 printDebug(sem, "");
                 break;
@@ -142,12 +94,6 @@ public class CodeGeneratorImpl implements CodeGenerator {
             case "completeWhile":
                 While.completeWhile();
                 printDebug(sem, "");
-            case "startLoop":
-                printDebug(sem, "");
-                break; //TODO
-            case "completeLoop":
-                printDebug(sem, "");
-                break; //TODO
             case "startForCondition":
                 For.startCondition();
                 printDebug(sem, "");
@@ -182,7 +128,7 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 break; //TODO
             case "readInt":
                 new InputReader().readInt();
-                printDebug(sem, Stacks.printSemanticSSIze()+" " + Stacks.printSymbolTableSIze());
+                printDebug(sem, Stacks.printSemanticSSIze() + " " + Stacks.printSymbolTableSIze());
                 break;
             case "readString":
                 new InputReader().readString();
@@ -192,17 +138,25 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 printDebug(sem, "");
                 break; //TODO
             case "divisionAssignment":
+                UnaryAndBinaryExpressions.divide();
+                new Assignment().assign();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "productionAssignment":
+                UnaryAndBinaryExpressions.production();
+                new Assignment().assign();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "additionAssignment":
+                UnaryAndBinaryExpressions.add();
+                new Assignment().assign();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "subtractionAssignment":
+                UnaryAndBinaryExpressions.sub();
+                new Assignment().assign();
                 printDebug(sem, "");
-                break; //TODO
+                break;
             case "logicalOr":
                 UnaryAndBinaryExpressions.logicalOr();
                 printDebug(sem, "");
@@ -288,8 +242,8 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 break; //TODO
             case "castReal":
                 des = (Descriptor) Stacks.popSemanticS();
-                 type = (Type) Stacks.popSemanticS();
-               new Cast(des, type,"i2s").castIntToReal();
+                type = (Type) Stacks.popSemanticS();
+                new Cast(des, type, "i2s").castIntToReal();
 //
 //                    String srcType = des.getType().toString();
 //                    String destType = type.toString();
@@ -298,9 +252,9 @@ public class CodeGeneratorImpl implements CodeGenerator {
                 printDebug(sem, "");
                 break;
             case "castInt":
-                 des = (Descriptor) Stacks.popSemanticS();
-                  type = (Type) Stacks.popSemanticS();
-                new Cast(des, type,"s2i").castRealToInt();
+                des = (Descriptor) Stacks.popSemanticS();
+                type = (Type) Stacks.popSemanticS();
+                new Cast(des, type, "s2i").castRealToInt();
                 printDebug(sem, "");
                 break;
             case "pushString":
@@ -324,14 +278,117 @@ public class CodeGeneratorImpl implements CodeGenerator {
             case "getLength":
                 printDebug(sem, "");
                 break; //TODO
-            case "popAndPushArrayType":
-                printDebug(sem, "");
-                break; //TODO
             case "pushArrayIDDcl":
                 printDebug(sem, "");
                 break; //TODO
 
         }
+    }
+
+    private void pushIdDCL() {
+        try {
+            DescriptorChecker.checkNotContainsDescriptor(lexical.currentSymbol().getToken());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        DescriptorChecker.checkNotContainsDescriptorGlobal(lexical.currentSymbol().getToken());
+
+        Stacks.pushSemanticS(lexical.currentSymbol().getToken());
+    }
+
+    private void addDescriptor() {
+        String name = (String) Stacks.popSemanticS();
+        Object t1 = Stacks.popSemanticS();
+
+        if (t1 instanceof Type) {
+            Type t = (Type) t1;
+            if (TypeChecker.isArrayType(t)) {
+                ArrayDescriptor lad = (ArrayDescriptor) Stacks.topSymbolTableS().getDescriptor(name);
+                lad.setRealName(name);
+            } else {
+                if (!Stacks.topSymbolTableS().contains(name)) {
+                    VariableDescriptor lvd = new VariableDescriptor(getVariableName(), t, true);
+                    Stacks.topSymbolTableS().addDescriptor(name, lvd);
+                    if (t != Type.STRING) {
+                        SPIMFileWriter.addCommandToDataSegment(lvd.getName(), "word", "0");
+                    } else {
+                        SPIMFileWriter.addCommandToDataSegment(lvd.getName(), "space", "20");
+
+                    }
+                } else {
+//                        try {
+////                            throw new NameError(name, true);
+//                        } catch (Exception e2) {
+//                            System.err.println(e2.getMessage());
+//                        }
+                }
+            }
+        }
+    }
+
+    private void pushId() {
+        System.out.println(lexical.currentSymbol().getToken());
+        if (!Stacks.isSymbolTableSEmpty() && Stacks.topSymbolTableS().contains(lexical.currentSymbol().getToken())) {
+            Stacks.pushSemanticS(Stacks.topSymbolTableS().getDescriptor(lexical.currentSymbol().getToken()));
+        } else {
+            try {
+                Stacks.pushSemanticS(GlobalSymbolTable.getSymbolTable().getDescriptor(lexical.currentSymbol().getToken()));
+            } catch (Exception e1) {
+//                        try {
+//                            try {
+//                                System.out.println(407);
+//                                throw new NameError(lexical.currentSymbol.getToken(), false);
+//                            } catch (Exception e2) {
+//                                System.err.println(e2.getMessage());
+//                                System.out.println(410);
+//                            }
+//                        } catch (Exception e2) {
+//                            System.out.println(414);
+//                            System.err.println(e2.getMessage());
+//                        }
+            }
+        }
+    }
+
+    private void pushIdarrayDCl() {
+        try {
+            DescriptorChecker.checkNotContainsDescriptor(lexical.currentSymbol().getToken());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        DescriptorChecker.checkNotContainsDescriptorGlobal(lexical.currentSymbol().getToken());
+        Type arrType = (Type) Stacks.topSemanticS();
+        if (!Stacks.topSymbolTableS().contains(lexical.currentSymbol().getToken())) {
+            Descriptor lad = new ArrayDescriptor(getVariableName(), arrType, true);
+            Stacks.topSymbolTableS().addDescriptor(lexical.currentSymbol().getToken(), lad);
+//                    AssemblyFileWriter.appendCommandToData(lad.getName(), "word", "0");
+            Stacks.pushSemanticS(lexical.currentSymbol().getToken());
+        } else {
+//                    try {
+//                        throw new NameError(lexical.currentSymbol.getToken(), true);
+//                    } catch (Exception e) {
+//                        System.err.println(e.getMessage());
+//                    }
+        }
+    }
+
+    private void popAndPushArrayType() {
+        Type type;
+        Object o = Stacks.popSemanticS();
+        type = (Type) o;
+        Type resType = null;
+        switch (type) {
+            case INTEGER_NUMBER:
+                resType = Type.INT_ARRAY;
+                break;
+            case REAL_NUMBER:
+                resType = Type.DOUBLE_ARRAY;
+                break;
+            case STRING:
+                resType = Type.STRING_ARRAY;
+                break;
+        }
+        Stacks.pushSemanticS(resType);
     }
 
     static void printDebug(String sem, String message) {

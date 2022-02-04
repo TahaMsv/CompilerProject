@@ -11,9 +11,9 @@ public class TypeChecker {
         return false;
     }
 
-//    public static boolean isArrayType(Type type) {
-//        return type == Type.DOUBLE_ARRAY || type == Type.INT_ARRAY || type == Type.STRING_ARRAY;
-//    }
+    public static boolean isArrayType(Type type) {
+        return type == Type.DOUBLE_ARRAY || type == Type.INT_ARRAY || type == Type.STRING_ARRAY;
+    }
 
     public static boolean checkArrayType(Type arrayType, Type elementType) {
         if ((arrayType == Type.INT_ARRAY && elementType == Type.INTEGER_NUMBER)

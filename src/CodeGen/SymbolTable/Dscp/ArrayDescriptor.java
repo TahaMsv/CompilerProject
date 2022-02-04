@@ -4,7 +4,7 @@ import CodeGen.SymbolTable.Descriptor;
 import CodeGen.Utils.Type;
 
 
-class ArrayDescriptor extends Descriptor {
+public class ArrayDescriptor extends Descriptor {
     private int size;
     private String realName;
     private boolean isLocal;
