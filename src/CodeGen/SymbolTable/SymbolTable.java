@@ -5,15 +5,12 @@ import java.util.Map;
 
 public class SymbolTable {
     private String scopeName;
-
+    private Map<String, Descriptor> symbolTable = new HashMap<>();
 
     public SymbolTable(String scopeName) {
         this.scopeName = scopeName;
 
     }
-
-
-    private Map<String, Descriptor> symbolTable = new HashMap<>();
 
     public boolean contains(String name) {
         return symbolTable.containsKey(name);
@@ -41,7 +38,4 @@ public class SymbolTable {
         return symbolTable.isEmpty();
     }
 
-    public void print() {
-        System.out.println("symbol table = " + symbolTable.toString());
-    }
 }

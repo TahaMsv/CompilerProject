@@ -8,7 +8,6 @@ import java.util.List;
 public class SPIMFileWriter {
     private String filePath;
     private static BufferedWriter writer;
-    private static String OUTPUT_ASSEMBLY_FILE_NAME = "compiled_code.s";
     private static String code = "";
     private static String data = "";
 
@@ -20,19 +19,21 @@ public class SPIMFileWriter {
     public static void addCommandToCode(String command, List<String> operands) {
         code += ('\t' + command);
         if (operands != null && operands.size() > 0)
-            code += (' ' + String.join(", ", operands) + '\n');
+            code += (' ' + String.join(", ", operands));
+        code+= '\n';
     }
 
     public static void addCommandToDataSegment(String dataName, String directive, String value) {
-        data += ('\t' + dataName + ": ." + directive + " " + value);
+        data += ('\t' + dataName + ": ." + directive + " " + value + '\n');
     }
 
     public static void addCommentToCode(String comment) {
-        code += ('\t' + comment + '\n');
+
+//        code += ('\t' + comment + '\n');
     }
 
     public static void addLabel(String name) {
-        code += name + ":\n" ;
+        code += (name + ":" + '\n') ;
     }
 
     public static void deleteLabel(String label) {
@@ -42,9 +43,9 @@ public class SPIMFileWriter {
 
     private void createCompiledFile() {
         try {
+            String OUTPUT_ASSEMBLY_FILE_NAME = "compiled_code.s";
             writer = new BufferedWriter(new FileWriter(filePath + OUTPUT_ASSEMBLY_FILE_NAME));
             code += ".text" + '\n';
-            //TODO check if input file has main
             code += ".globl main" + '\n';
             code += "main:" + '\n';
             data += ".data" + '\n';

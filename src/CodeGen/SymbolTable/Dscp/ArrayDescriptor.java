@@ -6,7 +6,7 @@ import CodeGen.Utils.Type;
 
 public class ArrayDescriptor extends Descriptor {
     private int size;
-    private String realName;
+    private String name;
     private boolean isLocal;
 
     public ArrayDescriptor(String name, Type type, boolean isLocal) {
@@ -17,16 +17,16 @@ public class ArrayDescriptor extends Descriptor {
         this.size = size;
     }
 
-    public void setRealName(String realName) {
-        this.realName = realName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getSize() {
         return size;
     }
 
-    public String getRealName() {
-        return realName;
+    public String getName() {
+        return name;
     }
 
     public boolean isLocal() {

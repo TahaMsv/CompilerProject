@@ -17,7 +17,6 @@ public class InputReader {
         SPIMFileWriter.addCommandToCode("li", Arrays.asList("$v0", "5"));
         SPIMFileWriter.addCommandToCode("syscall", Collections.emptyList());
         SPIMFileWriter.addCommandToCode("move", Arrays.asList("$t0", "$v0"));
-
         String variableName = CodeGeneratorImpl.getVariableName();
         SPIMFileWriter.addCommandToDataSegment(variableName, "word", "0");
         SPIMFileWriter.addCommandToCode("la", Arrays.asList("$t1", variableName));

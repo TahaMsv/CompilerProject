@@ -10,8 +10,8 @@ import java.util.Collections;
 public class Printer {
 
     public void print(Descriptor value) {
-        String outputType = "1";  // int
-        String comment = "Int";
+        String outputType;  // int
+        String comment;
         switch (value.getType()) {
             case INTEGER_NUMBER:
                 outputType = "1";  // int
@@ -33,7 +33,6 @@ public class Printer {
         SPIMFileWriter.addCommentToCode("Print " + comment + " (Value: " + value + ")");
         SPIMFileWriter.addCommandToCode("li", Arrays.asList("$v0", outputType));
         SPIMFileWriter.addCommandToCode("la", Arrays.asList("$t0", value.getName()));
-
         if (value.getType() == Type.REAL_NUMBER) {
             SPIMFileWriter.addCommandToCode("l.s", Arrays.asList("$f0", "0($t0)"));
             SPIMFileWriter.addCommandToCode("mov.s", Arrays.asList("$f12", "$f0"));

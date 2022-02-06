@@ -5,45 +5,46 @@ import CodeGen.SymbolTable.GlobalSymbolTable;
 import CodeGen.SymbolTable.Stacks;
 
 public class DescriptorChecker {
-    public static void checkContainsDescriptor(Descriptor descriptor) {
-        System.out.println("name of des = " + descriptor.getName());
-        if (!Stacks.topSymbolTableS().containsDescriptor(descriptor.getName())) {
-            try {
-//                throw new NameError( descriptor.getName(), false, "Symbol table ");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void checkNotContainsDescriptor(String name) throws Exception {
-        if (!Stacks.isSymbolTableSEmpty()) {
-            if (Stacks.topSymbolTableS().contains(name)) {
-//                throw new NameError(name, true, "Symbol table ");
-            }
-        }
-    }
-
-    public static void checkContainsDescriptorGlobal(Descriptor descriptor) {
-        System.out.println("name of des = " + descriptor.getName());
-        if (!GlobalSymbolTable.getSymbolTable().containsDescriptor(descriptor.getName())) {
-            try {
-//                throw new NameError( descriptor.getName(), false, "Global Symbol table ");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void checkNotContainsDescriptorGlobal(String name) {
-        if (!GlobalSymbolTable.getSymbolTable().isEmpty()) {
-            if (GlobalSymbolTable.getSymbolTable().contains(name)) {
+    public static void IsInSymbolTable(Descriptor descriptor , boolean findInGlobal) {
+        if(findInGlobal){
+            if (!GlobalSymbolTable.getSymbolTable().containsDescriptor(descriptor.getName())) {
                 try {
-//                    throw new NameError(name, true, "Global Symbol table ");
+//                throw new RuntimeException("Global Symbol Table Stack does not contain " + descriptor.getName());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }else{
+            if (!Stacks.topSymbolTableS().containsDescriptor(descriptor.getName())) {
+                try {
+//                    throw new RuntimeException("Symbol Table Stack does not contain " + descriptor.getName());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }
+
     }
+
+    public static void isNotInSymbolTable(String name, boolean findInGlobal) throws Exception {
+        if(findInGlobal){
+            if (!GlobalSymbolTable.getSymbolTable().isEmpty()) {
+                if (GlobalSymbolTable.getSymbolTable().contains(name)) {
+                    try {
+//                     throw new RuntimeException("Global Symbol Table Stack contains " + name);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }else{
+            if (!Stacks.isSymbolTableSEmpty()) {
+                if (Stacks.topSymbolTableS().contains(name)) {
+//                    throw new RuntimeException("Symbol Table Stack contains " + name);
+                }
+            }
+        }
+
+    }
+
 }

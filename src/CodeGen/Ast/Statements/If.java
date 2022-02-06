@@ -3,40 +3,33 @@ package CodeGen.Ast.Statements;
 
 import CodeGen.CodeGeneratorImpl;
 import CodeGen.SymbolTable.Descriptor;
+import CodeGen.SymbolTable.Stacks;
 import CodeGen.Utils.SPIMFileWriter;
 
 import java.util.Arrays;
 
 public class If {
     private Descriptor value;
-    private static String afterIfLabel;
-    private static String afterElseLabel;
-
     public If(Descriptor value) {
         this.value = value;
     }
-
     public void startIf() {
-        afterIfLabel = CodeGeneratorImpl.generateNewLabel();
-        afterElseLabel = CodeGeneratorImpl.generateNewLabel();
+        Stacks.pushStartIFS(CodeGeneratorImpl.generateNewLabel());
         SPIMFileWriter.addCommandToCode("la", Arrays.asList("$t0", value.getName()));
         SPIMFileWriter.addCommandToCode("lw", Arrays.asList("$t1", "0($t0)"));
-        SPIMFileWriter.addCommandToCode("beqz", Arrays.asList("$t1", afterIfLabel));
+        SPIMFileWriter.addCommandToCode("beqz", Arrays.asList("$t1", Stacks.topStartIFS()));
+        SPIMFileWriter.addCommandToCode("j", Arrays.asList("$t1", Stacks.topStartElseS()));
+        SPIMFileWriter.addLabel(Stacks.popStartIFS());
     }
-
     public static void completeIf() {
-        SPIMFileWriter.addCommandToCode("j", Arrays.asList(afterElseLabel));
-        SPIMFileWriter.addLabel(afterIfLabel);
-        SPIMFileWriter.addLabel(afterElseLabel);
+        SPIMFileWriter.addLabel(Stacks.popStartElseS());
     }
-
     public static void elseCode() {
-        SPIMFileWriter.deleteLabel(afterIfLabel);
-        SPIMFileWriter.addLabel(afterIfLabel);
+        Stacks.pushStartElseS(CodeGeneratorImpl.generateNewLabel());
+        SPIMFileWriter.addCommandToCode("j", Arrays.asList( Stacks.topStartElseS()));
+        SPIMFileWriter.addLabel(Stacks.popStartElseS());
     }
-
     public static void completeElse() {
-        SPIMFileWriter.deleteLabel(afterElseLabel);
-        SPIMFileWriter.addLabel(afterElseLabel);
+        SPIMFileWriter.addLabel(Stacks.popStartElseS());
     }
 }

@@ -2,26 +2,23 @@ package CodeGen.Utils;
 
 
 public class TypeChecker {
-    public static boolean checkType(Type firstType, Type secondType, String operation) {
+    public static boolean checkType(Type firstType, Type secondType) {
         if (firstType == secondType) {
             return true;
         }
-
-//        throw new TypeError(operation, firstType, secondType);
-        return false;
+        throw new RuntimeException("Type error");
     }
 
     public static boolean isArrayType(Type type) {
         return type == Type.DOUBLE_ARRAY || type == Type.INT_ARRAY || type == Type.STRING_ARRAY;
     }
 
-    public static boolean checkArrayType(Type arrayType, Type elementType) {
-        if ((arrayType == Type.INT_ARRAY && elementType == Type.INTEGER_NUMBER)
-                || (arrayType == Type.DOUBLE_ARRAY && elementType == Type.REAL_NUMBER)
+    public static void checkArrayType(Type arrayType, Type elementType) {
+        if ((arrayType == Type.INT_ARRAY && elementType == Type.INTEGER_NUMBER) || (arrayType == Type.DOUBLE_ARRAY && elementType == Type.REAL_NUMBER)
                 || (arrayType == Type.STRING_ARRAY && elementType == Type.STRING)) {
-            return true;
+            return;
         }
-//        throw new TypeError("TypeError: array type is " + elementType + " array but it is newed with " + arrayType);
-        return false;
+        throw new RuntimeException("Type error");
+
     }
 }

@@ -1,5 +1,7 @@
 package CodeGen.SymbolTable;
+
 import CodeGen.Utils.Type;
+
 import java.util.Objects;
 
 public abstract class Descriptor {
@@ -41,10 +43,8 @@ public abstract class Descriptor {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Descriptor that = (Descriptor) o;
-        return isLocal == that.isLocal &&
-                Objects.equals(addressName, that.addressName) &&
-                type == that.type;
+        Descriptor d = (Descriptor) o;
+        return isLocal == d.isLocal && type == d.type && Objects.equals(addressName, d.addressName);
     }
 
     @Override
@@ -52,12 +52,4 @@ public abstract class Descriptor {
         return Objects.hash(addressName, type, isLocal);
     }
 
-    @Override
-    public String toString() {
-        return "Descriptor{" +
-                "addressName='" + addressName + '\'' +
-                ", type=" + type +
-                ", isLocal=" + isLocal +
-                '}';
-    }
 }

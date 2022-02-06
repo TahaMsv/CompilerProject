@@ -29,15 +29,11 @@ public class Cast {
 
     private void convert(Descriptor firstOperandDes, Type resultType, String operationCommand, String storeCommand, String loadCommand) {
         SPIMFileWriter.addCommentToCode("binary " + this.operation + " expression of " + firstOperandDes.getName());
-
         SPIMFileWriter.addCommandToCode("la", Arrays.asList("$t0", firstOperandDes.getName()));
         SPIMFileWriter.addCommandToCode("lw", Arrays.asList("$t0", "0($t0)"));
         SPIMFileWriter.addCommandToCode("mtc1", Arrays.asList("$t0", "$f0"));
         SPIMFileWriter.addCommandToCode(operationCommand, Arrays.asList("$f1", "$f0"));
-
-//        AssemblyFileWriter.appendCommandToData(firstOperandDes.getName(), "word", "0");
         SPIMFileWriter.addCommandToCode(storeCommand, Arrays.asList("$f1", firstOperandDes.getName()));
-//        AssemblyFileWriter.appendDebugLine(firstOperandDes.getName());
         Stacks.pushSemanticS(new VariableDescriptor(firstOperandDes.getName(), resultType, true));
     }
 }

@@ -22,7 +22,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        String inputCoolFilePath = "C:\\Users\\Tahamousavi\\Downloads\\Telegram Desktop\\test.cool";
+        String inputCoolFilePath = "C:\\Users\\Tahamousavi\\Desktop\\Phase3Tests\\Phase3Tests\\test5.cool";
         String outputFilePath = "";
         String tablePath = "D:\\Sbu\\Semester 5\\Compiler\\Project\\Compiler1400\\src\\ScannerAndParser\\table.npt";
 //        if (args.length >= 6) {
@@ -59,5 +59,7 @@ public class Main {
         Parser parser = new Parser(scanner, codeGenerator, tablePath, true);
 
         parseAndWrite(outputFilePath, parser);
+
+        writer.writeOutputFile();
     }
 }
